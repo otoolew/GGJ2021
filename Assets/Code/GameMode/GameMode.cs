@@ -29,13 +29,12 @@ public class GameMode : MonoBehaviour
     private void Awake()
     {
         CurrentGameState = GameState.LOADING;
-        GameManager.Instance.AssignGameMode(this);
         InitGame();
     }
     // Start is called before the first frame update
     private void Start()
     {
-
+        //GameManager.Instance.AssignGameMode(this);
     }
 
     // Update is called once per frame
@@ -72,8 +71,8 @@ public class GameMode : MonoBehaviour
         else
         {
             playerUI.PauseMenuPanel.ResumeButton.onClick.AddListener(ResumeGame);
-            playerUI.PauseMenuPanel.AbortMissionButton.onClick.AddListener(ResumeGame);
-            playerUI.PauseMenuPanel.QuitButton.onClick.AddListener(ResumeGame);
+            playerUI.PauseMenuPanel.RestartButton.onClick.AddListener(ResetGame);
+            playerUI.PauseMenuPanel.QuitButton.onClick.AddListener(QuitGame);
         }
 
         // Camera 

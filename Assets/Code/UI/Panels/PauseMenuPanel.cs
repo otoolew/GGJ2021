@@ -7,8 +7,8 @@ public class PauseMenuPanel : MenuPanel
     [SerializeField] private Button resumeButton;
     public Button ResumeButton { get => resumeButton; set => resumeButton = value; }
 
-    [SerializeField] private Button abortMissionButton;
-    public Button AbortMissionButton { get => abortMissionButton; set => abortMissionButton = value; }
+    [SerializeField] private Button restartButton;
+    public Button RestartButton { get => restartButton; set => restartButton = value; }
 
     [SerializeField] private Button quitButton;
     public Button QuitButton { get => quitButton; set => quitButton = value; }
@@ -23,4 +23,5 @@ public class PauseMenuPanel : MenuPanel
     {
         gameObject.SetActive(false);
     }
+
 }
