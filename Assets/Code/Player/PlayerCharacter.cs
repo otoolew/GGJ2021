@@ -62,8 +62,8 @@ public class PlayerCharacter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //LookAtMouse();
-        //SteerInDirection(deviation);
+        LookAtMouse();
+        SteerInDirection(deviation);      
     }
 
     private void OnDisable()
@@ -83,33 +83,9 @@ public class PlayerCharacter : MonoBehaviour
 
     private void SetUpPlayerInput()
     {
-        if(inputActions != null)
-        {
-            inputActions.Character.Steer.performed += ctx => Steer_performed(ctx);
-        }
-        //if (character)
+        //if(inputActions != null)
         //{
-        //    // CharacterInput
-        //    character.PlayerController = this;
-        //    playerCharacter = character;
-
-        //    #region Character Input
-        //    inputActions.Character..started += playerCharacter.OnLeftPullTrigger;
-        //    inputActions.Character.Left_PullTrigger.canceled += playerCharacter.OnLeftPullTrigger;
-        //    inputActions.Character.Left_Reload.started += playerCharacter.OnLeftReload;
-
-        //    inputActions.Character.Right_PullTrigger.started += playerCharacter.OnRightPullTrigger;
-        //    inputActions.Character.Right_PullTrigger.canceled += playerCharacter.OnRightPullTrigger;
-        //    inputActions.Character.Right_Reload.started += playerCharacter.OnRightReload;
-
-        //    inputActions.Character.UseInteraction.started += playerCharacter.OnUseInteraction;
-
-        //    inputActions.Character.Dash.started += playerCharacter.OnDashPullTrigger;
-        //    inputActions.Character.Dash.canceled += playerCharacter.OnDashPullTrigger;
-
-        //    inputActions.Character.Enable();
-        //    #endregion
-        //    playerCharacter.SetUpPlayerUI(PlayerUI);
+        //    inputActions.Character.Steer.performed += ctx => Steer_performed(ctx);
         //}
     }
 
@@ -162,8 +138,9 @@ public class PlayerCharacter : MonoBehaviour
         {
             return;
         }
-        
-        deviation = Vector3.Dot(Vector3.right.normalized, playerToMouseDirection.normalized);
+
+        Vector3 offset = Vector3.right + new Vector3(13.59f, 0, 0);
+        deviation = Vector3.Dot(offset.normalized, playerToMouseDirection.normalized);
         if(Quaternion.LookRotation(playerToMouseDirection).eulerAngles != Vector3.zero)
         {
             Quaternion lookRotation = Quaternion.LookRotation(playerToMouseDirection);
@@ -175,7 +152,6 @@ public class PlayerCharacter : MonoBehaviour
             }
         }
     }
-
     private Vector3 MouseToWorldPoint(Vector2 mouseScreen)
     {
         Ray ray = Camera.main.ScreenPointToRay(mouseScreen);
@@ -188,22 +164,40 @@ public class PlayerCharacter : MonoBehaviour
     #endregion
 
     #region Character Methods
-    public void SteerInDirection(Vector2 direction)
-    {
-        float dirX = direction.x;
-        float halfScreen = Screen.width;
+    //public void SteerInDirection(Vector2 direction)
+    //{
+    //    float dirX = direction.x;
+    //    float halfScreen = Screen.width / 2;
+    //    Debug.Log("dirX " + dirX);
+    //    Debug.Log("Half Screen " + halfScreen);
 
-        Debug.Log("");
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(direction.x,0.0f, 0.0f) , Time.deltaTime * moveSpeed);
-    }
-    public void SteerInDirection(Vector3 direction)
-    {       
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, moveSpeed);
+    //    float normal = dirX / Screen.width;
+    //    Debug.Log("Normal " + normal);
+    //    Vector3 forward = transform.TransformDirection(Vector3.forward);
+    //    Vector3 toOther = new Vector3(direction.x, 0, direction.y) - transform.position;
+    //    print("Dot Product " + Vector3.Dot(forward, Vector3.forward));
+    //    if (Vector3.Dot(forward, toOther) < 0)
+    //    {
+    //        print("The other transform is behind me!");
+    //    }
+    //    // get the touch position from the screen touch to world point
+    //    Vector3 touchedPos = MouseToWorldPoint(direction);
+    //    touchedPos.y = 0;
+    //    touchedPos.z = 0;
+    //    // lerp and set the position of the current object to that of the touch, but smoothly over time.
+    //    transform.position = Vector3.Lerp(transform.position, touchedPos, Time.deltaTime);
+
+    //    //transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(direction.x,0.0f, 0.0f) , Time.deltaTime * moveSpeed);
+    //}
+    public void SteerInDirection(Vector2 direction)
+    {        
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(direction.x, 0, 0), moveSpeed);
     }
     public void SteerInDirection(float direction)
     {
         transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(direction, 0, 0), Time.deltaTime * moveSpeed);
     }
+
     public void EnableCharacterInput()
     {
         inputActions.Character.Enable();
