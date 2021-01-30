@@ -56,4 +56,12 @@ public class PlayerCamera : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, followTarget.position, Time.deltaTime * followSpeed);
     }
     #endregion
+
+    private void OnValidate()
+    {
+        if (followTarget)
+        {
+            ResetValues();
+        }
+    }
 }
