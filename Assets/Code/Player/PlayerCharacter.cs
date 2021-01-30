@@ -50,13 +50,16 @@ public class PlayerCharacter : MonoBehaviour
     {
         inputActions.UI.Enable();
         inputActions.UI.Pause.performed += OnPause;
-        SetUpPlayerInput();
         inputActions.Character.Enable();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        if (playerUI == null)
+        {
+            playerUI = GetComponent<PlayerUI>();
+        }
     }
 
     // Update is called once per frame
@@ -80,35 +83,9 @@ public class PlayerCharacter : MonoBehaviour
 
     #endregion
     #region PlayerInput Calls
-
-    private void SetUpPlayerInput()
-    {
-        //if(inputActions != null)
-        //{
-        //    inputActions.Character.Steer.performed += ctx => Steer_performed(ctx);
-        //}
-    }
-
-    private void Steer_performed(InputAction.CallbackContext callbackContext)
-    {
-        if (callbackContext.performed)
-        {           
-            Type inputType = callbackContext.valueType;
-            Debug.Log("InputType: " + inputType.FullName);
-            //if (inputType == typeof(Vector2))
-            //{
-
-            //}
-            Vector2 dir = callbackContext.ReadValue<Vector2>();
-            SteerInDirection(dir);
-            Debug.Log("Steering: " + callbackContext.ReadValue<Vector2>());
-            Debug.Log("Steering Normalized: " + callbackContext.ReadValue<Vector2>().normalized);
-            //Screen.width
-        }
-    }
-
     private void OnPause(InputAction.CallbackContext callbackContext)
     {
+        Debug.Log("OnPause");
         if (playerUI)
         {
             if (callbackContext.performed)
@@ -139,8 +116,8 @@ public class PlayerCharacter : MonoBehaviour
             return;
         }
 
-        Vector3 offset = Vector3.right + new Vector3(13.59f, 0, 0);
-        deviation = Vector3.Dot(offset.normalized, playerToMouseDirection.normalized);
+        //Vector3 offset = Vector3.right + new Vector3(13.59f, 0, 0);
+        deviation = Vector3.Dot(Vector3.right.normalized, playerToMouseDirection.normalized);
         if(Quaternion.LookRotation(playerToMouseDirection).eulerAngles != Vector3.zero)
         {
             Quaternion lookRotation = Quaternion.LookRotation(playerToMouseDirection);

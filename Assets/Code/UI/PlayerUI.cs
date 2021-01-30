@@ -9,12 +9,14 @@ public class PlayerUI : MonoBehaviour
 
     public void OpenPauseMenu()
     {
+        Debug.Log("[PAUSE]");
         pauseMenuPanel.Open();
         GameManager.Instance.GameMode.PauseGame();
     }
 
     public void ClosePauseMenu()
     {
+        Debug.Log("[UNPAUSE]");
         GameManager.Instance.GameMode.ResumeGame();
         pauseMenuPanel.Close();
     }
