@@ -463,7 +463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf803dab9c80ec1409952a0cc999c892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 0, y: 0, z: 0}
+  obstacleSpeed: 12
 --- !u!1 &987164031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,11 +1144,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacle: {fileID: 761477285}
-  obstacleSpawnTime: 2.5
-  obstacleSpawnX: 0
-  obstacleSpawnY: 0
-  obstacleSpawnZ: 0
-  numOfObstacles: 3
+  obstacleSpawnTime: 2
+  numOfObstacles: 10
+  spawnWidthLeft: -20
+  spawnWidthRight: 20
 --- !u!1 &1942052560
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,10 +7,10 @@ public class SpawnManager : MonoBehaviour
 
     public GameObject obstacle;
     public float obstacleSpawnTime;
-    public float obstacleSpawnX;
-    public float obstacleSpawnY;
-    public float obstacleSpawnZ;
     public int numOfObstacles;
+
+    public float spawnWidthLeft;
+    public float spawnWidthRight;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class SpawnManager : MonoBehaviour
             // arbitrary spawn values - will be based on the width of the river
             for(int i=0; i<numOfObstacles;i++)
             {
-                Vector3 obstacleSpawn = new Vector3(Random.Range(-5, 5f), 0, Random.Range(-5,0f));
+                Vector3 obstacleSpawn = new Vector3(Random.Range(spawnWidthLeft, spawnWidthRight), 0, Random.Range(-40,-80f));
                 Instantiate(obstacle, obstacleSpawn, Quaternion.identity);
             }
             yield return new WaitForSeconds(obstacleSpawnTime);
