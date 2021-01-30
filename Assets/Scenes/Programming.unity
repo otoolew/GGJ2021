@@ -1552,9 +1552,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3885f5ae60ff7994989678622716692f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacle: {fileID: 8819999980683922763, guid: a031fcdd7f84d3a4599c62cceaabee52, type: 3}
-  obstacleSpawnTime: 2
-  numOfObstacles: 10
+  obstacle: {fileID: 3244729539969149779, guid: de7a2129b5af2cc4884d24e206c0d69b, type: 3}
+  obstacleSpawnTime: 5
+  numOfObstacles: 7
   spawnWidthLeft: -20
   spawnWidthRight: 20
   despawnPoint: 25
