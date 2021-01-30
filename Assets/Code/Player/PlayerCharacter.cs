@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,7 +49,8 @@ public class PlayerCharacter : MonoBehaviour
     private void OnEnable()
     {
         inputActions.UI.Enable();
-        inputActions.UI.Pause.performed += OnPause;          
+        inputActions.UI.Pause.performed += OnPause;
+        SetUpPlayerInput();
         inputActions.Character.Enable();
     }
 
@@ -60,8 +62,8 @@ public class PlayerCharacter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LookAtMouse();
-        SteerInDirection(deviation);
+        //LookAtMouse();
+        //SteerInDirection(deviation);
     }
 
     private void OnDisable()
@@ -81,6 +83,10 @@ public class PlayerCharacter : MonoBehaviour
 
     private void SetUpPlayerInput()
     {
+        if(inputActions != null)
+        {
+            inputActions.Character.Steer.performed += ctx => Steer_performed(ctx);
+        }
         //if (character)
         //{
         //    // CharacterInput
@@ -106,6 +112,25 @@ public class PlayerCharacter : MonoBehaviour
         //    playerCharacter.SetUpPlayerUI(PlayerUI);
         //}
     }
+
+    private void Steer_performed(InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.performed)
+        {           
+            Type inputType = callbackContext.valueType;
+            Debug.Log("InputType: " + inputType.FullName);
+            //if (inputType == typeof(Vector2))
+            //{
+
+            //}
+            Vector2 dir = callbackContext.ReadValue<Vector2>();
+            SteerInDirection(dir);
+            Debug.Log("Steering: " + callbackContext.ReadValue<Vector2>());
+            Debug.Log("Steering Normalized: " + callbackContext.ReadValue<Vector2>().normalized);
+            //Screen.width
+        }
+    }
+
     private void OnPause(InputAction.CallbackContext callbackContext)
     {
         if (playerUI)
@@ -126,14 +151,6 @@ public class PlayerCharacter : MonoBehaviour
 
     #endregion
 
-    #region Camera
-
-    #endregion
-
-    # region PlayerRotation
-
-    #endregion
-
     // Start is called before the first frame update
     #region Mouse
     public void LookAtMouse()
@@ -147,13 +164,15 @@ public class PlayerCharacter : MonoBehaviour
         }
         
         deviation = Vector3.Dot(Vector3.right.normalized, playerToMouseDirection.normalized);
-
-        Quaternion lookRotation = Quaternion.LookRotation(playerToMouseDirection);
-        if (lookRotation.eulerAngles != Vector3.zero)
+        if(Quaternion.LookRotation(playerToMouseDirection).eulerAngles != Vector3.zero)
         {
-            lookRotation.x = 0f;
-            lookRotation.z = 0f;
-            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, RotationSpeed * Time.deltaTime);
+            Quaternion lookRotation = Quaternion.LookRotation(playerToMouseDirection);
+            if (lookRotation.eulerAngles != Vector3.zero)
+            {
+                lookRotation.x = 0f;
+                lookRotation.z = 0f;
+                transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, RotationSpeed * Time.deltaTime);
+            }
         }
     }
 
@@ -169,6 +188,14 @@ public class PlayerCharacter : MonoBehaviour
     #endregion
 
     #region Character Methods
+    public void SteerInDirection(Vector2 direction)
+    {
+        float dirX = direction.x;
+        float halfScreen = Screen.width;
+
+        Debug.Log("");
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(direction.x,0.0f, 0.0f) , Time.deltaTime * moveSpeed);
+    }
     public void SteerInDirection(Vector3 direction)
     {       
         transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, moveSpeed);

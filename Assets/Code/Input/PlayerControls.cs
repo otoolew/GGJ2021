@@ -555,116 +555,23 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             ""id"": ""61faabe6-26ff-4d03-8ae8-2da4cdcced92"",
             ""actions"": [
                 {
-                    ""name"": ""Move"",
-                    ""type"": ""Value"",
-                    ""id"": ""cb33c20c-ed1f-4629-a24d-615553290910"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Look"",
-                    ""type"": ""Value"",
-                    ""id"": ""d45526de-6ff2-4590-8675-1830fed8fa9a"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Boost"",
-                    ""type"": ""Button"",
-                    ""id"": ""5c930fb5-885d-405d-b2ee-bd963f2b7159"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""UseInteraction"",
                     ""type"": ""Button"",
                     ""id"": ""a7a91dc8-440b-4b72-9dc8-f747c8d67ccf"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Steer"",
+                    ""type"": ""Value"",
+                    ""id"": ""da87f826-2314-4376-a798-e0691e4fe36a"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""ea68f108-605d-4e0d-91c2-a3c76b97ff0e"",
-                    ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""Dpad"",
-                    ""id"": ""4f5bfa87-1a74-4e50-9668-d48d381d32d8"",
-                    ""path"": ""Dpad"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""35ee50a7-dc4c-4f49-a6f2-dffd4096614b"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""5170ee8a-f4d6-4572-baea-8691df422a0e"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""f2c0dfa7-b7bf-4c96-b39c-4f94d4f7f895"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""6671fd73-9d4e-47f7-a777-b4b1f624757f"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2e111562-86cb-476f-93f9-6b1726fb1dab"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": ""NormalizeVector2"",
-                    ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""5ca62aca-f3ce-4aca-8c14-49235f42fd45"",
@@ -689,23 +596,34 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f13c9f39-8fc2-40c9-80d6-2e942b4c0459"",
-                    ""path"": ""<Keyboard>/leftShift"",
+                    ""id"": ""9b4163af-dc3a-40d3-9985-bf322fa94847"",
+                    ""path"": ""<Touchscreen>/primaryTouch"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Boost"",
+                    ""action"": ""Steer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""8e66f85c-bc5c-4de7-ac65-0673a2cc6a58"",
-                    ""path"": ""<XInputController>/buttonSouth"",
+                    ""id"": ""248d57b9-f836-4a05-870d-17431c0f2b51"",
+                    ""path"": ""<Pointer>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Boost"",
+                    ""action"": ""Steer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""11f8d8a0-3f08-469f-830e-9dc39eca47c7"",
+                    ""path"": ""<Pointer>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -729,10 +647,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
         // Character
         m_Character = asset.FindActionMap("Character", throwIfNotFound: true);
-        m_Character_Move = m_Character.FindAction("Move", throwIfNotFound: true);
-        m_Character_Look = m_Character.FindAction("Look", throwIfNotFound: true);
-        m_Character_Boost = m_Character.FindAction("Boost", throwIfNotFound: true);
         m_Character_UseInteraction = m_Character.FindAction("UseInteraction", throwIfNotFound: true);
+        m_Character_Steer = m_Character.FindAction("Steer", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -895,18 +811,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     // Character
     private readonly InputActionMap m_Character;
     private ICharacterActions m_CharacterActionsCallbackInterface;
-    private readonly InputAction m_Character_Move;
-    private readonly InputAction m_Character_Look;
-    private readonly InputAction m_Character_Boost;
     private readonly InputAction m_Character_UseInteraction;
+    private readonly InputAction m_Character_Steer;
     public struct CharacterActions
     {
         private @PlayerControls m_Wrapper;
         public CharacterActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Character_Move;
-        public InputAction @Look => m_Wrapper.m_Character_Look;
-        public InputAction @Boost => m_Wrapper.m_Character_Boost;
         public InputAction @UseInteraction => m_Wrapper.m_Character_UseInteraction;
+        public InputAction @Steer => m_Wrapper.m_Character_Steer;
         public InputActionMap Get() { return m_Wrapper.m_Character; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -916,34 +828,22 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_CharacterActionsCallbackInterface != null)
             {
-                @Move.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMove;
-                @Look.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLook;
-                @Look.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLook;
-                @Look.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLook;
-                @Boost.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnBoost;
-                @Boost.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnBoost;
-                @Boost.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnBoost;
                 @UseInteraction.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnUseInteraction;
                 @UseInteraction.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnUseInteraction;
                 @UseInteraction.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnUseInteraction;
+                @Steer.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnSteer;
+                @Steer.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnSteer;
+                @Steer.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnSteer;
             }
             m_Wrapper.m_CharacterActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Move.started += instance.OnMove;
-                @Move.performed += instance.OnMove;
-                @Move.canceled += instance.OnMove;
-                @Look.started += instance.OnLook;
-                @Look.performed += instance.OnLook;
-                @Look.canceled += instance.OnLook;
-                @Boost.started += instance.OnBoost;
-                @Boost.performed += instance.OnBoost;
-                @Boost.canceled += instance.OnBoost;
                 @UseInteraction.started += instance.OnUseInteraction;
                 @UseInteraction.performed += instance.OnUseInteraction;
                 @UseInteraction.canceled += instance.OnUseInteraction;
+                @Steer.started += instance.OnSteer;
+                @Steer.performed += instance.OnSteer;
+                @Steer.canceled += instance.OnSteer;
             }
         }
     }
@@ -964,9 +864,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     }
     public interface ICharacterActions
     {
-        void OnMove(InputAction.CallbackContext context);
-        void OnLook(InputAction.CallbackContext context);
-        void OnBoost(InputAction.CallbackContext context);
         void OnUseInteraction(InputAction.CallbackContext context);
+        void OnSteer(InputAction.CallbackContext context);
     }
 }
