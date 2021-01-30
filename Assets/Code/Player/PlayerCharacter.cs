@@ -22,6 +22,14 @@ public class PlayerCharacter : MonoBehaviour
     #endregion
 
     #region Values
+    public static float CurrentPlayerSpeed;
+
+    [SerializeField] private float moveSpeed;
+    public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
+
+    [SerializeField, Range(-1.0f, 1.0f)] private float deviation;
+    public float Deviation { get => deviation; set => deviation = value; }
+
     [SerializeField] private float rotationSpeed;
     public float RotationSpeed { get => rotationSpeed; set => rotationSpeed = value; }
 
@@ -50,14 +58,13 @@ public class PlayerCharacter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerCamera.AssignFollowTarget(transform);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //SteerInDirection(InputActions.Character.Move.ReadValue<Vector2>());
         LookAtMouse();
+        SteerInDirection(deviation);
     }
 
     private void OnDisable()
@@ -135,6 +142,15 @@ public class PlayerCharacter : MonoBehaviour
     public void LookAtMouse()
     {
         Vector3 playerToMouseDirection = MouseToWorldPoint(Mouse.current.position.ReadValue()) - transform.position;
+
+        Vector3 forward = transform.TransformDirection(Vector3.up).normalized;
+        if (Vector3.Dot(forward, playerToMouseDirection) < 0)
+        {
+            return;
+        }
+        
+        deviation = Vector3.Dot(Vector3.right.normalized, playerToMouseDirection.normalized);
+
         Quaternion lookRotation = Quaternion.LookRotation(playerToMouseDirection);
         if (lookRotation.eulerAngles != Vector3.zero)
         {
@@ -142,8 +158,6 @@ public class PlayerCharacter : MonoBehaviour
             lookRotation.z = 0f;
             transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, RotationSpeed * Time.deltaTime);
         }
-
-        Debug.Log("Dot Product " + Vector3.Dot(Vector3.up, transform.rotation.eulerAngles));
     }
 
     private Vector3 MouseToWorldPoint(Vector2 mouseScreen)
@@ -158,12 +172,14 @@ public class PlayerCharacter : MonoBehaviour
     #endregion
 
     #region Character Methods
-
     public void SteerInDirection(Vector3 direction)
-    {
-
+    {       
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, moveSpeed);
     }
-   
+    public void SteerInDirection(float direction)
+    {
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(direction, 0, 0), Time.deltaTime * moveSpeed);
+    }
     public void EnableCharacterInput()
     {
         inputActions.Character.Enable();

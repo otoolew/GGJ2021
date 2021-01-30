@@ -157,6 +157,8 @@ MonoBehaviour:
   playerCollider: {fileID: 57570221}
   playerCamera: {fileID: 1624453520}
   playerUI: {fileID: 272933927}
+  moveSpeed: 1
+  deviation: 0
   rotationSpeed: 30
   currentDirection: {x: 0, y: 0, z: 0}
   layerMask:
@@ -341,7 +343,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &987164031
 GameObject:
@@ -833,9 +835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transformOffset: {x: 0, y: 10, z: -2}
   rotationOffset: {x: 80, y: 0, z: 0}
-  followSpeed: 10
   cameraTransform: {fileID: 1851259171}
-  followTarget: {fileID: 57570220}
 --- !u!4 &1624453521
 Transform:
   m_ObjectHideFlags: 0
@@ -849,7 +849,7 @@ Transform:
   m_Children:
   - {fileID: 1851259171}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 80, y: 0, z: 0}
 --- !u!1001 &1766862788
 PrefabInstance:
