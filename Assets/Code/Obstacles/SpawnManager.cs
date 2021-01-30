@@ -12,8 +12,10 @@ public class SpawnManager : MonoBehaviour
     public float spawnWidthLeft;
     public float spawnWidthRight;
 
+    public float despawnPoint;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         StartCoroutine(ObstacleSpawn());
     }
@@ -29,6 +31,22 @@ public class SpawnManager : MonoBehaviour
                 Instantiate(obstacle, obstacleSpawn, Quaternion.identity);
             }
             yield return new WaitForSeconds(obstacleSpawnTime);
+        }
+    }
+
+    private void Update()
+    {
+        destroyObstacle();
+    }
+
+    private void destroyObstacle()
+    {
+        foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Spawnable"))
+        {
+            if(obj.transform.position.z >= despawnPoint)
+            {
+                Destroy(obj);
+            }
         }
     }
 }
