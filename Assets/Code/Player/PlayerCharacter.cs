@@ -7,10 +7,13 @@ public class PlayerCharacter : MonoBehaviour
 {
     #region Input
     [SerializeField] private PlayerControls inputActions;
-    public PlayerControls InputActions { get => inputActions; set => inputActions = value; }   
+    public PlayerControls InputActions { get => inputActions; set => inputActions = value; }
     #endregion
 
     #region Components
+    [SerializeField] private CapsuleCollider playerCollider;
+    public CapsuleCollider PlayerCollider { get => playerCollider; set => playerCollider = value; }
+
     [SerializeField] private PlayerCamera playerCamera;
     public PlayerCamera PlayerCamera { get => playerCamera; set => playerCamera = value; }
 
@@ -19,11 +22,18 @@ public class PlayerCharacter : MonoBehaviour
     #endregion
 
     #region Values
+    [SerializeField] private float rotationSpeed;
+    public float RotationSpeed { get => rotationSpeed; set => rotationSpeed = value; }
+
     [SerializeField] private Vector3 currentDirection;
     public Vector3 CurrentDirection { get => currentDirection; set => currentDirection = value; }
 
     #endregion
+    #region Mouse Values
 
+    [SerializeField] private LayerMask layerMask;
+    public LayerMask LayerMask { get => layerMask; set => layerMask = value; }
+    #endregion
     #region Monobehaviour 
     private void Awake()
     {
@@ -46,7 +56,8 @@ public class PlayerCharacter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SteerInDirection(InputActions.Character.Move.ReadValue<Vector2>());
+        //SteerInDirection(InputActions.Character.Move.ReadValue<Vector2>());
+        LookAtMouse();
     }
 
     private void OnDisable()
@@ -114,6 +125,38 @@ public class PlayerCharacter : MonoBehaviour
     #region Camera
 
     #endregion
+
+    # region PlayerRotation
+
+    #endregion
+
+    // Start is called before the first frame update
+    #region Mouse
+    public void LookAtMouse()
+    {
+        Vector3 playerToMouseDirection = MouseToWorldPoint(Mouse.current.position.ReadValue()) - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(playerToMouseDirection);
+        if (lookRotation.eulerAngles != Vector3.zero)
+        {
+            lookRotation.x = 0f;
+            lookRotation.z = 0f;
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, RotationSpeed * Time.deltaTime);
+        }
+
+        Debug.Log("Dot Product " + Vector3.Dot(Vector3.up, transform.rotation.eulerAngles));
+    }
+
+    private Vector3 MouseToWorldPoint(Vector2 mouseScreen)
+    {
+        Ray ray = Camera.main.ScreenPointToRay(mouseScreen);
+        if (Physics.Raycast(ray, out RaycastHit rayHit, 100, layerMask))
+        {
+            return rayHit.point;
+        }
+        return transform.position;
+    }
+    #endregion
+
     #region Character Methods
 
     public void SteerInDirection(Vector3 direction)
@@ -131,5 +174,9 @@ public class PlayerCharacter : MonoBehaviour
     }
     #endregion
 
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, MouseToWorldPoint(Mouse.current.position.ReadValue()));
+    }
 }
