@@ -13,9 +13,6 @@ public class GameMode : MonoBehaviour
     public GameState CurrentGameState { get => currentGameState; set => currentGameState = value; }
 
     [Header("Player Components")]
-    [SerializeField] private PlayerCamera playerCamera;
-    public PlayerCamera PlayerCamera { get => playerCamera; set => playerCamera = value; }
-
     [SerializeField] private PlayerUI playerUI;
     public PlayerUI PlayerUI { get => playerUI; set => playerUI = value; }
 
@@ -74,14 +71,6 @@ public class GameMode : MonoBehaviour
             playerUI.PauseMenuPanel.RestartButton.onClick.AddListener(ResetGame);
             playerUI.PauseMenuPanel.QuitButton.onClick.AddListener(QuitGame);
         }
-
-        // Camera 
-        playerCamera = FindObjectOfType<PlayerCamera>();
-        if (playerCamera == null)
-        {      
-            Debug.Log("Player Camera NULL");
-        }
-
         StartGame();
     }
 

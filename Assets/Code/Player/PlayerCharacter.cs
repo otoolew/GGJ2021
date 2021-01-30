@@ -14,9 +14,6 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private CapsuleCollider playerCollider;
     public CapsuleCollider PlayerCollider { get => playerCollider; set => playerCollider = value; }
 
-    [SerializeField] private PlayerCamera playerCamera;
-    public PlayerCamera PlayerCamera { get => playerCamera; set => playerCamera = value; }
-
     [SerializeField] private PlayerUI playerUI;
     public PlayerUI PlayerUI { get => playerUI; set => playerUI = value; }
     #endregion
