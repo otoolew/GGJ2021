@@ -694,6 +694,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObstacleManager (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8838686913918765487, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
+      propertyPath: toSpawnlist.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838686913918765487, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
+      propertyPath: toSpawnlist.Array.data[12]
+      value: 
+      objectReference: {fileID: 3244729539969149779, guid: 34bd52fe6334f4f0386cb6a787ffdaac, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
 --- !u!1 &517844711
@@ -724,7 +732,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &533725329
 GameObject:
@@ -820,7 +828,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &779235415
 GameObject:
