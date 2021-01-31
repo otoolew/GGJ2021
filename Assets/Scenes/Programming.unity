@@ -123,6 +123,30 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &229686024 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5676339890572163275, guid: b9dfcc9526ba0714ea9438e37234ca5f, type: 3}
+  m_PrefabInstance: {fileID: 1304755147}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &229686025
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229686024}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5e490c9078896421abacf4015fed8878, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &272933927 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8924752639538580884, guid: f8dcfa7b6e1241d4b8ee7ce1155ff74e, type: 3}
@@ -197,6 +221,14 @@ PrefabInstance:
       propertyPath: obstacleSpawnTime
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8838686913918765487, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
+      propertyPath: toSpawnlist.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838686913918765487, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
+      propertyPath: toSpawnlist.Array.data[4]
+      value: 
+      objectReference: {fileID: 3244729539969149779, guid: 2ba116b98d6d94b70ad424e18fa05661, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
 --- !u!1 &517844711
@@ -425,6 +457,10 @@ PrefabInstance:
       propertyPath: jumpSpeed
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 5676339889668717106, guid: b9dfcc9526ba0714ea9438e37234ca5f, type: 3}
+      propertyPath: playerAnimator
+      value: 
+      objectReference: {fileID: 229686025}
     - target: {fileID: 5676339889668717106, guid: b9dfcc9526ba0714ea9438e37234ca5f, type: 3}
       propertyPath: currentDirection.z
       value: 0
