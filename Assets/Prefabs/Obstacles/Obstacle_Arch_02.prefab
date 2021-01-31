@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -418406140456006249}
   m_Layer: 0
   m_Name: Obstacle_Arch_02
-  m_TagString: Untagged
+  m_TagString: Spawnable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
