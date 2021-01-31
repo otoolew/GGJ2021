@@ -27,7 +27,6 @@ public class PlayerCharacter : MonoBehaviour
     public GameObject WakeEffect { get => wakeEffect; set => wakeEffect = value; }
     
     #region SFX
-
     [SerializeField] private AudioSource playerAttackSFX;
     public AudioSource PlayerAttackSFX { get => playerAttackSFX; set => playerAttackSFX = value; }
 
