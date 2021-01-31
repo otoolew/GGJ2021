@@ -55,6 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1789149906585555948}
   - component: {fileID: 457743837935667542}
+  - component: {fileID: 4417678355131203455}
   m_Layer: 0
   m_Name: Obstacle_Statue_03
   m_TagString: Spawnable
@@ -91,6 +92,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSpeed: 5
+--- !u!136 &4417678355131203455
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7208247951673849401}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.75
+  m_Height: 9.29
+  m_Direction: 2
+  m_Center: {x: 0.15, y: 0.19, z: 1.44}
 --- !u!1001 &6755156348911072299
 PrefabInstance:
   m_ObjectHideFlags: 0
