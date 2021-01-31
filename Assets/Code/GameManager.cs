@@ -10,7 +10,6 @@ public class GameManager : Singleton<GameManager>
 
     #region Scene Values
     [Header("Scene Management")]
-    //public SceneItem[] Scenes;
     [SerializeField] private string currentSceneName;
     public string CurrentSceneName { get => currentSceneName; set => currentSceneName = value; }
 
@@ -29,13 +28,6 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         Debug.Log("[GAME MANAGER] Start");
-    }
-    #endregion
-
-    #region Game Management
-    public void AssignGameMode(GameMode gameMode)
-    {
-        GameMode = gameMode;
     }
     #endregion
 
