@@ -38,6 +38,11 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private Vector3 currentDirection;
     public Vector3 CurrentDirection { get => currentDirection; set => currentDirection = value; }
 
+    [SerializeField] private Vector3 moveVector = Vector3.zero;
+    [SerializeField] private float jumpSpeed;
+    [SerializeField] private float gravity;
+    [SerializeField] private CharacterController characterController;
+
     #endregion
     #region Mouse Values
 
@@ -64,13 +69,16 @@ public class PlayerCharacter : MonoBehaviour
         {
             playerUI = GetComponent<PlayerUI>();
         }
+        characterController = GetComponent<CharacterController>();
+        Timer.instance.BeginTimer();
     }
 
     // Update is called once per frame
     void Update()
     {
         LookAtMouse();
-        SteerInDirection(deviation);     
+        SteerInDirection(deviation);
+        PlayerJump();
     }
 
     private void OnDisable()
@@ -142,6 +150,16 @@ public class PlayerCharacter : MonoBehaviour
             return rayHit.point;
         }
         return transform.position;
+    }
+    private void PlayerJump()
+    {
+        if (characterController.isGrounded && Input.GetButtonDown("Jump"))
+        {
+            currentDirection.y = jumpSpeed;
+
+        }
+
+        currentDirection.y -= gravity * Time.deltaTime;
     }
     #endregion
 
