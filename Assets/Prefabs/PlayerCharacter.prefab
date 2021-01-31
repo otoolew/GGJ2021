@@ -33,6 +33,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5676339890330024715}
+  - {fileID: 5328570472699698713}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -58,6 +59,7 @@ MonoBehaviour:
   moveVector: {x: 0, y: 0, z: 0}
   jumpSpeed: 15
   gravity: 2
+  soulsCollected: 0
   playerHitSFX: {fileID: 1301635379825436759}
   changeDirectionSFX: {fileID: 6007881083410654830}
   collectSoulSFX: {fileID: 4178502369925072942}
@@ -599,6 +601,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0e718f083323f7b44b4fc28d64711f45, type: 3}
   m_PrefabInstance: {fileID: 1077487337}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &782934294730524463
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5676339889668717109}
+    m_Modifications:
+    - target: {fileID: 4841202521672571190, guid: bebd2e6b14c7f3b4fa99d0fc5c7bf813, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4841202521672571190, guid: bebd2e6b14c7f3b4fa99d0fc5c7bf813, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4841202521672571190, guid: bebd2e6b14c7f3b4fa99d0fc5c7bf813, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 4841202521672571190, guid: bebd2e6b14c7f3b4fa99d0fc5c7bf813, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4841202521672571190, guid: bebd2e6b14c7f3b4fa99d0fc5c7bf813, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4841202521672571190, guid: bebd2e6b14c7f3b4fa99d0fc5c7bf813, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4841202521672571190, guid: bebd2e6b14c7f3b4fa99d0fc5c7bf813, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4841202521672571190, guid: bebd2e6b14c7f3b4fa99d0fc5c7bf813, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4841202521672571190, guid: bebd2e6b14c7f3b4fa99d0fc5c7bf813, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4841202521672571190, guid: bebd2e6b14c7f3b4fa99d0fc5c7bf813, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4841202521672571190, guid: bebd2e6b14c7f3b4fa99d0fc5c7bf813, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099282553704209242, guid: bebd2e6b14c7f3b4fa99d0fc5c7bf813, type: 3}
+      propertyPath: m_Name
+      value: Scythe_Attack_01
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bebd2e6b14c7f3b4fa99d0fc5c7bf813, type: 3}
+--- !u!4 &5328570472699698713 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4841202521672571190, guid: bebd2e6b14c7f3b4fa99d0fc5c7bf813, type: 3}
+  m_PrefabInstance: {fileID: 782934294730524463}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3025948375245251706
 PrefabInstance:

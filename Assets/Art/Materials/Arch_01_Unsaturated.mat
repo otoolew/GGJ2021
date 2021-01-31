@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Arch_01
+  m_Name: Arch_01_Unsaturated
   m_Shader: {fileID: -6465566751694194690, guid: 47402b235c885144daf109a991f48944, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
