@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MainMenuBackground
   m_EditorClassIdentifier: 
   colorName: MainMenu
-  color: {r: 1, g: 0.84647185, b: 0.5235849, a: 0}
+  color: {r: 1, g: 0.677686, b: 0, a: 1}

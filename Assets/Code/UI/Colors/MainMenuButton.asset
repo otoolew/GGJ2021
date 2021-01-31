@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c8fdd06e0c5bf43b302d3342c013c0, type: 3}
   m_Name: MainMenuButton
   m_EditorClassIdentifier: 
-  colorName: 
-  color: {r: 0.82700205, g: 1, b: 0.7877358, a: 0}
+  colorName: MainMenuButton
+  color: {r: 0.641202, g: 0.9433962, b: 0.5740477, a: 1}

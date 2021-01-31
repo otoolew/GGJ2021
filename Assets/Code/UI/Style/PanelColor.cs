@@ -26,7 +26,7 @@ public class PanelColor : MonoBehaviour
             string colorValue = "#" + value;
             if (ColorUtility.TryParseHtmlString(colorValue, out Color color))
             {
-                backgroundImage.color = color;
+                colorSwatch.ApplyToImage(backgroundImage);
             }
         }
 
@@ -42,7 +42,7 @@ public class PanelColor : MonoBehaviour
 
         if (colorSwatch != null)
         {
-            SetImageColor(colorSwatch.GetRGB());
+            SetImageColor(colorSwatch.GetRGBA());
         }
     }
 #endif
