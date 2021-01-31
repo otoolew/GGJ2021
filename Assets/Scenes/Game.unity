@@ -7504,6 +7504,7 @@ MonoBehaviour:
   characterController: {fileID: 1632499100}
   playerUI: {fileID: 272933927}
   wakeEffect: {fileID: 337110173}
+  attackEffect: {fileID: 926102937}
   playerAttackSFX: {fileID: 1632499102}
   playerHitSFX: {fileID: 1632499097}
   changeDirectionSFX: {fileID: 1632499099}
@@ -7515,7 +7516,7 @@ MonoBehaviour:
   jumpSpeed: 15
   gravity: 2
   soulsCollected: 0
-  isInvulnerable: 0
+  isAttacking: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 64
