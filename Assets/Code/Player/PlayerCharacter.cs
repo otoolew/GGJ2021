@@ -3,27 +3,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+//[Serializable] public enum PlayerStat { }
 public class PlayerCharacter : MonoBehaviour
 {
-    // Connects to PlayerController Animator so it knows when to turn sprite.
-    [SerializeField] private Animator playerAnimator;
-    public Animator Animator { get => playerAnimator; set => playerAnimator = value; }
-
     #region Input
     [SerializeField] private PlayerControls inputActions;
     public PlayerControls InputActions { get => inputActions; set => inputActions = value; }
     #endregion
 
     #region Components
+    [Header("Components")]
+    // Connects to PlayerController Animator so it knows when to turn sprite.
+    [SerializeField] private Animator playerAnimator;
+    public Animator Animator { get => playerAnimator; set => playerAnimator = value; }
+
     [SerializeField] private CharacterController characterController;
     public CharacterController CharacterController { get => characterController; set => characterController = value; }
 
     [SerializeField] private PlayerUI playerUI;
     public PlayerUI PlayerUI { get => playerUI; set => playerUI = value; }
+
+    [SerializeField] private GameObject wakeEffect;
+    public GameObject WakeEffect { get => wakeEffect; set => wakeEffect = value; }
+    
+    #region SFX
+
+    [SerializeField] private AudioSource playerAttackSFX;
+    public AudioSource PlayerAttackSFX { get => playerAttackSFX; set => playerAttackSFX = value; }
+
+    [SerializeField] private AudioSource playerHitSFX;
+    public AudioSource PlayerHitSFX { get => playerHitSFX; set => playerHitSFX = value; }
+
+    [SerializeField] private AudioSource changeDirectionSFX;
+    public AudioSource ChangeDirectionSFX { get => changeDirectionSFX; set => changeDirectionSFX = value; }
+
+    [SerializeField] private AudioSource collectSoulSFX;
+    public AudioSource CollectSoulSFX { get => collectSoulSFX; set => collectSoulSFX = value; }
+    #endregion
+
     #endregion
 
     #region Values
+    [Header("Values")]
     public static float CurrentPlayerSpeed;
 
     [SerializeField] private float moveSpeed;
@@ -38,19 +59,17 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private Vector3 currentDirection;
     public Vector3 CurrentDirection { get => currentDirection; set => currentDirection = value; }
 
-    [SerializeField] private Vector3 moveVector = Vector3.zero;
     [SerializeField] private float jumpSpeed;
+    public float JumpSpeed { get => jumpSpeed; set => jumpSpeed = value; }
+
     [SerializeField] private float gravity;
+    public float Gravity { get => gravity; set => gravity = value; }
+
     [SerializeField] private int soulsCollected;
+    public int SoulsCollected { get => soulsCollected; set => soulsCollected = value; }
 
-    [SerializeField] private AudioSource playerHitSFX;
-    public AudioSource PlayerHitSFX { get => playerHitSFX; set => playerHitSFX = value; }
-
-    [SerializeField] private AudioSource changeDirectionSFX;
-    public AudioSource ChangeDirectionSFX { get => changeDirectionSFX; set => changeDirectionSFX = value; }
-
-    [SerializeField] private AudioSource collectSoulSFX;
-    public AudioSource CollectSoulSFX { get => collectSoulSFX; set => collectSoulSFX = value; }
+    [SerializeField] private bool isInvulnerable;
+    public bool IsInvulnerable { get => isInvulnerable; set => isInvulnerable = value; }
     #endregion
 
     #region Mouse Values
@@ -87,8 +106,7 @@ public class PlayerCharacter : MonoBehaviour
     void Update()
     {
         LookAtMouse();
-        SteerInDirection(deviation);
-        PlayerJump();
+        SteerInDirection(deviation);        
     }
 
     private void OnDisable()
@@ -123,7 +141,35 @@ public class PlayerCharacter : MonoBehaviour
             }
         }
     }
+    private void OnAttack(InputAction.CallbackContext callbackContext)
+    {
+        Debug.Log("On Attack");
+        if(playerAttackSFX.clip != null)
+        {
+            playerAttackSFX.Play();
+        }
 
+        if (playerUI)
+        {
+            if (callbackContext.performed)
+            {
+                if (GameManager.Instance.GameMode.CurrentGameState != GameState.PAUSED)
+                {
+                    PlayerUI.OpenPauseMenu();
+                }
+                else
+                {
+                    PlayerUI.ClosePauseMenu();
+                }
+            }
+        }
+    }
+    IEnumerator AttackRoutine()
+    {
+        //playerAnimator.Set
+        return null;
+        //return new WaitWhile(playerAnimator.)
+    }
     #endregion
 
     // Start is called before the first frame update
@@ -175,16 +221,7 @@ public class PlayerCharacter : MonoBehaviour
         }
         return transform.position;
     }
-    private void PlayerJump()
-    {
-        if (characterController.isGrounded && Input.GetButtonDown("Jump"))
-        {
-            currentDirection.y = jumpSpeed;
 
-        }
-
-        currentDirection.y -= gravity * Time.deltaTime;
-    }
     #endregion
 
     #region Character Methods

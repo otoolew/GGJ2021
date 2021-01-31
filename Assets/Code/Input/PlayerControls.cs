@@ -555,45 +555,23 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             ""id"": ""61faabe6-26ff-4d03-8ae8-2da4cdcced92"",
             ""actions"": [
                 {
-                    ""name"": ""UseInteraction"",
-                    ""type"": ""Button"",
-                    ""id"": ""a7a91dc8-440b-4b72-9dc8-f747c8d67ccf"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Steer"",
                     ""type"": ""Value"",
                     ""id"": ""da87f826-2314-4376-a798-e0691e4fe36a"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""b69abc94-830b-45b7-9c69-111788f2ca33"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""5ca62aca-f3ce-4aca-8c14-49235f42fd45"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""UseInteraction"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""94c0cf3f-ede0-4634-98b2-a8742317c34e"",
-                    ""path"": ""<XInputController>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""UseInteraction"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""9b4163af-dc3a-40d3-9985-bf322fa94847"",
@@ -626,6 +604,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Steer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""68922780-fadd-409a-a6a5-8fedcde10115"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ceb74ebd-b83d-4251-b374-e98b325101a3"",
+                    ""path"": ""<Touchscreen>/touch0/tap"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -647,8 +647,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
         // Character
         m_Character = asset.FindActionMap("Character", throwIfNotFound: true);
-        m_Character_UseInteraction = m_Character.FindAction("UseInteraction", throwIfNotFound: true);
         m_Character_Steer = m_Character.FindAction("Steer", throwIfNotFound: true);
+        m_Character_Attack = m_Character.FindAction("Attack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -811,14 +811,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     // Character
     private readonly InputActionMap m_Character;
     private ICharacterActions m_CharacterActionsCallbackInterface;
-    private readonly InputAction m_Character_UseInteraction;
     private readonly InputAction m_Character_Steer;
+    private readonly InputAction m_Character_Attack;
     public struct CharacterActions
     {
         private @PlayerControls m_Wrapper;
         public CharacterActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @UseInteraction => m_Wrapper.m_Character_UseInteraction;
         public InputAction @Steer => m_Wrapper.m_Character_Steer;
+        public InputAction @Attack => m_Wrapper.m_Character_Attack;
         public InputActionMap Get() { return m_Wrapper.m_Character; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -828,22 +828,22 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_CharacterActionsCallbackInterface != null)
             {
-                @UseInteraction.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnUseInteraction;
-                @UseInteraction.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnUseInteraction;
-                @UseInteraction.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnUseInteraction;
                 @Steer.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnSteer;
                 @Steer.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnSteer;
                 @Steer.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnSteer;
+                @Attack.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAttack;
+                @Attack.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAttack;
+                @Attack.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAttack;
             }
             m_Wrapper.m_CharacterActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @UseInteraction.started += instance.OnUseInteraction;
-                @UseInteraction.performed += instance.OnUseInteraction;
-                @UseInteraction.canceled += instance.OnUseInteraction;
                 @Steer.started += instance.OnSteer;
                 @Steer.performed += instance.OnSteer;
                 @Steer.canceled += instance.OnSteer;
+                @Attack.started += instance.OnAttack;
+                @Attack.performed += instance.OnAttack;
+                @Attack.canceled += instance.OnAttack;
             }
         }
     }
@@ -864,7 +864,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     }
     public interface ICharacterActions
     {
-        void OnUseInteraction(InputAction.CallbackContext context);
         void OnSteer(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
     }
 }
