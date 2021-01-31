@@ -9,6 +9,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject obstacle;
     [SerializeField] private GameObject soul;
 
+    [SerializeField] private GameObject[] toSpawnlist = new GameObject[2];
+
     [SerializeField] private float obstacleSpawnTime;
     [SerializeField] private int numOfObstacles;
     [SerializeField] private float spawnWidthLeft;
@@ -18,6 +20,8 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        toSpawnlist[0] = soul;
+        toSpawnlist[1] = obstacle;
         StartCoroutine(ObstacleSpawn());
     }
 
@@ -30,8 +34,7 @@ public class SpawnManager : MonoBehaviour
             {
                 //obstacle = obstacleList[Random.Range(0, 3)];
                 Vector3 obstacleSpawn = new Vector3(Random.Range(spawnWidthLeft, spawnWidthRight), -3f, Random.Range(-40,-80f));
-                Instantiate(obstacle, obstacleSpawn, Quaternion.identity);
-                //obstacle.transform.Rotate(0, Random.Range(-45, 45), 0, Space.Self);
+                Instantiate(toSpawnlist[Random.Range(0,2)], obstacleSpawn, Quaternion.identity);
             }
             yield return new WaitForSeconds(obstacleSpawnTime);
         }

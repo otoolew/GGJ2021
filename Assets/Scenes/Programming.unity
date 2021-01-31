@@ -857,6 +857,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5676339889668717106, guid: b9dfcc9526ba0714ea9438e37234ca5f, type: 3}
+      propertyPath: playerUI
+      value: 
+      objectReference: {fileID: 272933927}
     - target: {fileID: 5676339889668717107, guid: b9dfcc9526ba0714ea9438e37234ca5f, type: 3}
       propertyPath: m_Name
       value: PlayerCharacter
@@ -1470,6 +1474,9 @@ MonoBehaviour:
   - {fileID: 7208247951673849401, guid: f973c1124c544ff40b57cac9b85fa8eb, type: 3}
   obstacle: {fileID: 3244729539969149779, guid: de7a2129b5af2cc4884d24e206c0d69b, type: 3}
   soul: {fileID: 8819999980683922763, guid: a031fcdd7f84d3a4599c62cceaabee52, type: 3}
+  toSpawnlist:
+  - {fileID: 0}
+  - {fileID: 0}
   obstacleSpawnTime: 5
   numOfObstacles: 25
   spawnWidthLeft: -20
