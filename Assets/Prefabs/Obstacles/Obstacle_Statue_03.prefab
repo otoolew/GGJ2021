@@ -73,10 +73,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1.52
-  m_Height: 1.69
+  m_Radius: 1.25
+  m_Height: 8.9
   m_Direction: 1
-  m_Center: {x: 0.12, y: 0.36, z: 1.07}
+  m_Center: {x: 0.51, y: 2.87, z: 0.42}
 --- !u!1001 &6755156348911072299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -114,31 +114,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8dc5a2d166c2dc64a84929bfa2f2f426, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.6532097
+      value: 0.74076945
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8dc5a2d166c2dc64a84929bfa2f2f426, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.28896934
+      value: -0.65919304
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8dc5a2d166c2dc64a84929bfa2f2f426, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.030858051
+      value: -0.10637664
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8dc5a2d166c2dc64a84929bfa2f2f426, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.69918644
+      value: -0.07354754
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8dc5a2d166c2dc64a84929bfa2f2f426, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -160.466
+      value: -82.87
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8dc5a2d166c2dc64a84929bfa2f2f426, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 151.866
+      value: -29.245
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8dc5a2d166c2dc64a84929bfa2f2f426, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -441.16602
+      value: 14.598
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 8dc5a2d166c2dc64a84929bfa2f2f426, type: 3}
       propertyPath: m_Materials.Array.data[0]
