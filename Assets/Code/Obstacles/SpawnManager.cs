@@ -18,6 +18,7 @@ public class SpawnManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(ObstacleSpawn());
+        Timer.instance.BeginTimer();
     }
 
     IEnumerator ObstacleSpawn()
