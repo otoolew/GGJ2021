@@ -86,7 +86,9 @@ public class PlayerCharacter : MonoBehaviour
     {
         inputActions.UI.Enable();
         inputActions.UI.Pause.performed += OnPause;
+
         inputActions.Character.Enable();
+        inputActions.Character.Attack.performed += OnAttack;
     }
 
     // Start is called before the first frame update
@@ -140,34 +142,32 @@ public class PlayerCharacter : MonoBehaviour
             }
         }
     }
+
     private void OnAttack(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log("On Attack");
-        if(playerAttackSFX.clip != null)
+        if (callbackContext.performed)
         {
-            playerAttackSFX.Play();
-        }
 
-        if (playerUI)
-        {
-            if (callbackContext.performed)
+            Debug.Log("On Attack");
+            if (playerAttackSFX.clip != null)
             {
-                if (GameManager.Instance.GameMode.CurrentGameState != GameState.PAUSED)
-                {
-                    PlayerUI.OpenPauseMenu();
-                }
-                else
-                {
-                    PlayerUI.ClosePauseMenu();
-                }
+                playerAttackSFX.Play();
             }
+
+            if (playerAnimator)
+            {
+                playerAnimator.SetTrigger("Attack");
+            }
+
         }
     }
     IEnumerator AttackRoutine()
     {
-        //playerAnimator.Set
-        return null;
-        //return new WaitWhile(playerAnimator.)
+        wakeEffect.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(1.0f);
+
+        wakeEffect.gameObject.SetActive(true);
     }
     #endregion
 
