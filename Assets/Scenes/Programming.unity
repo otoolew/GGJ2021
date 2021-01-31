@@ -529,6 +529,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1747148721 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 714350548792314252, guid: 40c3ac156f950574c8f9f757bc8e8231, type: 3}
+  m_PrefabInstance: {fileID: 3060956850646670618}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1747148725
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747148721}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1766862788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -801,6 +820,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 714350548792314252, guid: 40c3ac156f950574c8f9f757bc8e8231, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6510289660289905569, guid: 40c3ac156f950574c8f9f757bc8e8231, type: 3}
       propertyPath: m_Name
       value: Environment
