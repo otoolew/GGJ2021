@@ -47,6 +47,7 @@ public class Obstacle : MonoBehaviour
             PlayerCharacter pc = other.GetComponent<PlayerCharacter>();
             if (pc)
             {
+                pc.CollectSoul();
                 if (pc.CollectSoulSFX.clip != null)
                 {
                     pc.CollectSoulSFX.Play();

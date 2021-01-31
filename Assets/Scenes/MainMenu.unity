@@ -1313,7 +1313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startGameButton: {fileID: 421030576}
   quitButton: {fileID: 692368895}
-  startSceneName: Programming
+  startSceneName: Game
 --- !u!114 &1948926049
 MonoBehaviour:
   m_ObjectHideFlags: 0

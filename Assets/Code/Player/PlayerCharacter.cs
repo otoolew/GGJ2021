@@ -41,6 +41,7 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private Vector3 moveVector = Vector3.zero;
     [SerializeField] private float jumpSpeed;
     [SerializeField] private float gravity;
+    [SerializeField] private int soulsCollected;
 
     [SerializeField] private AudioSource playerHitSFX;
     public AudioSource PlayerHitSFX { get => playerHitSFX; set => playerHitSFX = value; }
@@ -73,6 +74,7 @@ public class PlayerCharacter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        soulsCollected = 0;
         if (playerUI == null)
         {
             playerUI = GetComponent<PlayerUI>();
@@ -189,10 +191,13 @@ public class PlayerCharacter : MonoBehaviour
 
     public void SteerInDirection(float deviationValue)
     {
-
         transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(deviationValue, 0, 0), Time.deltaTime * moveSpeed);
     }
-
+    public void CollectSoul()
+    {
+        soulsCollected += 1;
+        playerUI.ChangeSoulsCollectedText(soulsCollected);
+    }
     public void EnableCharacterInput()
     {
         inputActions.Character.Enable();
