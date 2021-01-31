@@ -5,14 +5,14 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
 
-    public GameObject obstacle;
-    public float obstacleSpawnTime;
-    public int numOfObstacles;
+    [SerializeField] private GameObject[] obstacleList = new GameObject[3];
+    [SerializeField] private GameObject obstacle;
+    [SerializeField] private float obstacleSpawnTime;
+    [SerializeField] private int numOfObstacles;
 
-    public float spawnWidthLeft;
-    public float spawnWidthRight;
-
-    public float despawnPoint;
+    [SerializeField] private float spawnWidthLeft;
+    [SerializeField] private float spawnWidthRight;
+    [SerializeField] private float despawnPoint;
 
     // Start is called before the first frame update
     private void Start()
@@ -27,6 +27,7 @@ public class SpawnManager : MonoBehaviour
             // arbitrary spawn values - will be based on the width of the river
             for(int i=0; i<numOfObstacles;i++)
             {
+                obstacle = obstacleList[Random.Range(0, 3)];
                 Vector3 obstacleSpawn = new Vector3(Random.Range(spawnWidthLeft, spawnWidthRight), -3f, Random.Range(-40,-80f));
                 Instantiate(obstacle, obstacleSpawn, Quaternion.identity);
                 //obstacle.transform.Rotate(0, Random.Range(-45, 45), 0, Space.Self);
