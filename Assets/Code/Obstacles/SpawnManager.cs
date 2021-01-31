@@ -28,7 +28,7 @@ public class SpawnManager : MonoBehaviour
             {
                 //obstacle = obstacleList[Random.Range(0, 3)];
                 Vector3 obstacleSpawn = new Vector3(Random.Range(spawnWidthLeft, spawnWidthRight), 2f, Random.Range(-40,-80f));
-                Instantiate(toSpawnlist[Random.Range(0,4)], obstacleSpawn, Quaternion.identity);
+                Instantiate(toSpawnlist[Random.Range(0,toSpawnlist.Length)], obstacleSpawn, Quaternion.identity);
             }
             yield return new WaitForSeconds(obstacleSpawnTime);
         }
