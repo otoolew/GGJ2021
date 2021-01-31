@@ -30,15 +30,16 @@ public class MainMenuPanel : MenuPanel
 
     public override void Close()
     {
+
     }
+
     public void StartButton_Clicked()
     {
-        Debug.Log("Start Clicked");
         GameManager.Instance.LoadScene(startSceneName);
     }
+
     public void QuitButton_Clicked()
     {
-        Debug.Log("Quit Selected!");
         Application.Quit();
     }
 
