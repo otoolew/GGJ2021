@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 2092972287245433203}
   m_Layer: 0
   m_Name: Demon_Bat
-  m_TagString: Spawnable
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

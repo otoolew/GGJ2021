@@ -25,7 +25,7 @@ public class Obstacle : MonoBehaviour
         //delete if we spawn overlaps
         if(other.gameObject.tag == ("Spawnable"))
         {
-            Debug.Log("Overlap detected - deleting");
+            //Debug.Log("Overlap detected - deleting");
             Destroy(this.gameObject);
         }
 
@@ -46,11 +46,10 @@ public class Obstacle : MonoBehaviour
 
         if (other.gameObject.tag == ("Player") && (this.gameObject.tag == "Enemy"))
         {
-            Debug.Log("Player hit!");
+            Debug.Log("Player Hit Enemy " + gameObject.name);
             PlayerCharacter pc = other.GetComponent<PlayerCharacter>();
             if (pc)
             {
-
                 if (pc.IsAttacking)
                 {
                     Destroy(this.gameObject);
@@ -65,6 +64,7 @@ public class Obstacle : MonoBehaviour
             string currentSceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene(currentSceneName);
         }
+
         if (other.gameObject.tag == ("Player") && (this.gameObject.tag == "Soul"))
         {
             PlayerCharacter pc = other.GetComponent<PlayerCharacter>();

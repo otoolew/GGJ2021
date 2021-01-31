@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Spawnable
   - Soul
+  - Enemy
   layers:
   - Default
   - TransparentFX
