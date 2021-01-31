@@ -6,6 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
 
     [SerializeField] private GameObject[] toSpawnlist = new GameObject[4];
+    [SerializeField] private float spawnHeight;
 
     [SerializeField] private float obstacleSpawnTime;
     [SerializeField] private int numOfObstacles;
@@ -27,8 +28,8 @@ public class SpawnManager : MonoBehaviour
             for(int i=0; i<numOfObstacles;i++)
             {
                 //obstacle = obstacleList[Random.Range(0, 3)];
-                Vector3 obstacleSpawn = new Vector3(Random.Range(spawnWidthLeft, spawnWidthRight), 2f, Random.Range(-40,-80f));
-                Instantiate(toSpawnlist[Random.Range(0,4)], obstacleSpawn, Quaternion.identity);
+                Vector3 obstacleSpawn = new Vector3(Random.Range(spawnWidthLeft, spawnWidthRight), spawnHeight, Random.Range(-40,-80f));
+                Instantiate(toSpawnlist[Random.Range(0,toSpawnlist.Length)], obstacleSpawn, Quaternion.identity);
             }
             yield return new WaitForSeconds(obstacleSpawnTime);
         }
