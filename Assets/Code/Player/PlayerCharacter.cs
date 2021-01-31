@@ -22,10 +22,14 @@ public class PlayerCharacter : MonoBehaviour
 
     [SerializeField] private PlayerUI playerUI;
     public PlayerUI PlayerUI { get => playerUI; set => playerUI = value; }
-
+    #region VFX
     [SerializeField] private GameObject wakeEffect;
     public GameObject WakeEffect { get => wakeEffect; set => wakeEffect = value; }
-    
+
+    [SerializeField] private GameObject attackEffect;
+    public GameObject AttackEffect { get => attackEffect; set => attackEffect = value; }
+    #endregion
+
     #region SFX
     [SerializeField] private AudioSource playerAttackSFX;
     public AudioSource PlayerAttackSFX { get => playerAttackSFX; set => playerAttackSFX = value; }
@@ -67,8 +71,8 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private int soulsCollected;
     public int SoulsCollected { get => soulsCollected; set => soulsCollected = value; }
 
-    [SerializeField] private bool isInvulnerable;
-    public bool IsInvulnerable { get => isInvulnerable; set => isInvulnerable = value; }
+    [SerializeField] private bool isAttacking;
+    public bool IsAttacking { get => isAttacking; set => isAttacking = value; }
     #endregion
 
     #region Mouse Values
@@ -147,27 +151,33 @@ public class PlayerCharacter : MonoBehaviour
     {
         if (callbackContext.performed)
         {
-
-            Debug.Log("On Attack");
-            if (playerAttackSFX.clip != null)
+            if (!IsAttacking)
             {
-                playerAttackSFX.Play();
+                StartCoroutine(AttackRoutine());
             }
-
-            if (playerAnimator)
-            {
-                playerAnimator.SetTrigger("Attack");
-            }
-
         }
     }
     IEnumerator AttackRoutine()
     {
-        wakeEffect.gameObject.SetActive(false);
+        Debug.Log("Start Attack Routine");
+        IsAttacking = true;
+        if (playerAttackSFX.clip != null)
+        {
+            playerAttackSFX.Play();
+        }
 
+        if (playerAnimator)
+        {
+            playerAnimator.SetTrigger("Attack");
+        }
+        wakeEffect.SetActive(false);
+        attackEffect.SetActive(true);
         yield return new WaitForSeconds(1.0f);
+        Debug.Log("Stop Attack Routine");
+        IsAttacking = false;
+        wakeEffect.SetActive(true);
+        attackEffect.SetActive(false);
 
-        wakeEffect.gameObject.SetActive(true);
     }
     #endregion
 

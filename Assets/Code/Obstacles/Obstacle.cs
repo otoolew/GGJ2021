@@ -34,6 +34,13 @@ public class Obstacle : MonoBehaviour
             PlayerCharacter pc = other.GetComponent<PlayerCharacter>();
             if (pc)
             {
+
+                if (pc.IsAttacking)
+                {
+                    Destroy(this.gameObject);
+                    return;
+                }
+
                 if(pc.PlayerHitSFX.clip != null)
                 {
                     pc.PlayerHitSFX.Play();
@@ -41,6 +48,7 @@ public class Obstacle : MonoBehaviour
             }
             string currentSceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene(currentSceneName);
+
         }   
         if(other.gameObject.tag == ("Player") && (this.gameObject.tag == "Soul"))
         {
