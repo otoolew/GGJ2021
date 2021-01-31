@@ -8,10 +8,11 @@ public class Timer : MonoBehaviour
 {
     public static Timer instance;
 
-    [SerializeField] private Text timeCounter;
+    [SerializeField] public Text timeCounter;
 
     private TimeSpan timePlaying;
     private bool timerGoing;
+
     private float elapsedTime;
 
     private void Awake()
@@ -22,7 +23,7 @@ public class Timer : MonoBehaviour
     private void Start()
     {
         timeCounter.text = "Time: 00:00.00";
-        timerGoing = false;
+        timerGoing = true;
     }
 
     public void BeginTimer()
@@ -46,6 +47,7 @@ public class Timer : MonoBehaviour
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
             string timePlayingStr = "Time: " + timePlaying.ToString("mm':'ss'.'ff");
             print(timePlayingStr);
+            //timeCounter.GetComponent<Text>().text = timePlayingStr;
             timeCounter.text = timePlayingStr;
 
             yield return null;
