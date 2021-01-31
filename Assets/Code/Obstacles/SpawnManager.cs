@@ -5,10 +5,6 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
 
-    [SerializeField] private GameObject[] obstacleList = new GameObject[3];
-    [SerializeField] private GameObject obstacle;
-    [SerializeField] private GameObject soul;
-
     [SerializeField] private GameObject[] toSpawnlist = new GameObject[2];
 
     [SerializeField] private float obstacleSpawnTime;
@@ -20,8 +16,6 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        toSpawnlist[0] = soul;
-        toSpawnlist[1] = obstacle;
         StartCoroutine(ObstacleSpawn());
     }
 
