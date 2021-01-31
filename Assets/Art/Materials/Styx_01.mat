@@ -32,6 +32,18 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_0a5609263abe47d7b1779b12e76d9af3:
+        m_Texture: {fileID: 2800000, guid: 64f5ef66acdbb194f99622295df49dc5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_99f8e351579c4039a9661b3011f7371a:
+        m_Texture: {fileID: 2800000, guid: 94aff25498ef059499b46d5d58ec4e01, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_c75a8006de874e61b798ac13e3a44178:
+        m_Texture: {fileID: 2800000, guid: 7af59a59684c16a4aacd5e867adcb2c3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -72,6 +84,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_b30b905fa8b44a4cb655a5d366981131_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 7af59a59684c16a4aacd5e867adcb2c3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_f3a2459acdbe43ef96b74544181ec78f_Texture_1:
         m_Texture: {fileID: 2800000, guid: 61665d5a124165f499de99eb9100158b, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -97,7 +113,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_46c1d6fa13df4d5086b21e89a5027d1c: 1
+    - Vector1_46c1d6fa13df4d5086b21e89a5027d1c: 3.5
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -125,6 +141,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Vector2_0d946e790d3a406784f90f7a2283e390: {r: 10, g: 10, b: 0, a: 0}
+    - Vector2_2ea0ba26b81f4d1caa21c2ead756f2c5: {r: 0, g: 0, b: 0, a: 0}
+    - Vector2_5aff3ba18ffe4f8abab7b231ce3116bf: {r: 0, g: 0, b: 0, a: 0}
+    - Vector2_727a7b700f7e4cac9d68266fa82b2d97: {r: 10, g: 10, b: 0, a: 0}
     - Vector2_7a6fcf719c2a4148806ea9543728ea9c: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_c897553e6e994bb4a51e17ecc46eb667: {r: 10, g: 10, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
