@@ -542,45 +542,23 @@
             "id": "61faabe6-26ff-4d03-8ae8-2da4cdcced92",
             "actions": [
                 {
-                    "name": "UseInteraction",
-                    "type": "Button",
-                    "id": "a7a91dc8-440b-4b72-9dc8-f747c8d67ccf",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Steer",
                     "type": "Value",
                     "id": "da87f826-2314-4376-a798-e0691e4fe36a",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "b69abc94-830b-45b7-9c69-111788f2ca33",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "5ca62aca-f3ce-4aca-8c14-49235f42fd45",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "UseInteraction",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "94c0cf3f-ede0-4634-98b2-a8742317c34e",
-                    "path": "<XInputController>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "UseInteraction",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "9b4163af-dc3a-40d3-9985-bf322fa94847",
@@ -611,6 +589,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Steer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68922780-fadd-409a-a6a5-8fedcde10115",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ceb74ebd-b83d-4251-b374-e98b325101a3",
+                    "path": "<Touchscreen>/touch0/tap",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
