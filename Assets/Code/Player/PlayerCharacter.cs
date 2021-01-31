@@ -6,6 +6,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerCharacter : MonoBehaviour
 {
+    // Connects to PlayerController Animator so it knows when to turn sprite.
+    [SerializeField] private Animator playerAnimator;
+    public Animator Animator { get => playerAnimator; set => playerAnimator = value; }
+
     #region Input
     [SerializeField] private PlayerControls inputActions;
     public PlayerControls InputActions { get => inputActions; set => inputActions = value; }
@@ -116,7 +120,7 @@ public class PlayerCharacter : MonoBehaviour
     #region Mouse
     public void LookAtMouse()
     {
-        Vector3 playerToMouseDirection = MouseToWorldPoint(Mouse.current.position.ReadValue()) - transform.position;
+        Vector3 playerToMouseDirection = MouseToWorldPoint(Mouse.current.position.ReadValue()) - transform.position; 
 
         Vector3 forward = transform.TransformDirection(Vector3.up).normalized;
         if (Vector3.Dot(forward, playerToMouseDirection) < 0)
@@ -134,6 +138,7 @@ public class PlayerCharacter : MonoBehaviour
                 lookRotation.x = 0f;
                 lookRotation.z = 0f;
                 transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, RotationSpeed * Time.deltaTime);
+                playerAnimator.SetFloat("direction", lookRotation.w);
             }
         }
     }
