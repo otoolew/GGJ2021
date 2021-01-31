@@ -32,7 +32,7 @@ public class Obstacle : MonoBehaviour
         {
             Debug.Log("Player hit!");
             string currentSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(currentSceneName);
+            //SceneManager.LoadScene(currentSceneName);
         }   
         if(other.gameObject.tag == ("Player") && (this.gameObject.tag == "Soul"))
         {
