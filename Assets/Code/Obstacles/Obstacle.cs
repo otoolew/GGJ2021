@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Obstacle : MonoBehaviour
 {
 
-    public float obstacleSpeed;
+    [SerializeField] private float obstacleSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +33,11 @@ public class Obstacle : MonoBehaviour
             Debug.Log("Player hit!");
             string currentSceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene(currentSceneName);
+        }   
+        if(other.gameObject.tag == ("Player") && (this.gameObject.tag == "Soul"))
+        {
+            Debug.Log("Soul acquired!");
+            Destroy(this.gameObject);
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
 
-    [SerializeField] private GameObject[] toSpawnlist = new GameObject[2];
+    [SerializeField] private GameObject[] toSpawnlist = new GameObject[4];
 
     [SerializeField] private float obstacleSpawnTime;
     [SerializeField] private int numOfObstacles;
@@ -27,8 +27,8 @@ public class SpawnManager : MonoBehaviour
             for(int i=0; i<numOfObstacles;i++)
             {
                 //obstacle = obstacleList[Random.Range(0, 3)];
-                Vector3 obstacleSpawn = new Vector3(Random.Range(spawnWidthLeft, spawnWidthRight), -3f, Random.Range(-40,-80f));
-                Instantiate(toSpawnlist[Random.Range(0,2)], obstacleSpawn, Quaternion.identity);
+                Vector3 obstacleSpawn = new Vector3(Random.Range(spawnWidthLeft, spawnWidthRight), 2f, Random.Range(-40,-80f));
+                Instantiate(toSpawnlist[Random.Range(0,4)], obstacleSpawn, Quaternion.identity);
             }
             yield return new WaitForSeconds(obstacleSpawnTime);
         }
@@ -46,6 +46,13 @@ public class SpawnManager : MonoBehaviour
         foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Spawnable"))
         {
             if(obj.transform.position.z >= despawnPoint)
+            {
+                Destroy(obj);
+            }
+        }
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Soul"))
+        {
+            if (obj.transform.position.z >= despawnPoint)
             {
                 Destroy(obj);
             }

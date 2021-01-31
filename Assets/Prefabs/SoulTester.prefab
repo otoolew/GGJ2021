@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 8819999980683922760}
   - component: {fileID: 8819999980683922756}
   m_Layer: 0
-  m_Name: ObstacleTester
-  m_TagString: Spawnable
+  m_Name: SoulTester
+  m_TagString: Soul
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8819999980683922763}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.54, y: 2.09, z: -5}
-  m_LocalScale: {x: 0.58711, y: 0.11361, z: 0.84711}
+  m_LocalScale: {x: 0.9673811, y: 2.4334192, z: 1.1251944}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -108,4 +108,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf803dab9c80ec1409952a0cc999c892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacleSpeed: 5
+  obstacleSpeed: 30
