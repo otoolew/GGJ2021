@@ -50,6 +50,12 @@ MonoBehaviour:
   - {fileID: 8819999980683922763, guid: a031fcdd7f84d3a4599c62cceaabee52, type: 3}
   - {fileID: 3244729539969149779, guid: 2ba116b98d6d94b70ad424e18fa05661, type: 3}
   - {fileID: 2886205281351075467, guid: 9cb43025c0881fa44b504d827988cf87, type: 3}
+  - {fileID: 2886205281351075467, guid: ea94c28a2f4b27a41ab76f61e112e4c7, type: 3}
+  - {fileID: 2886205281351075467, guid: 16a7ce04a2376dc48bbd7716058e38b5, type: 3}
+  - {fileID: 2886205281351075467, guid: e7a2dfbae94a0654f9d4752ee2fd68c0, type: 3}
+  - {fileID: 3244729539969149779, guid: de7a2129b5af2cc4884d24e206c0d69b, type: 3}
+  - {fileID: 8008851381986954802, guid: 58fde376e976cd843a3b5841ce107c0d, type: 3}
+  - {fileID: 7208247951673849401, guid: f973c1124c544ff40b57cac9b85fa8eb, type: 3}
   spawnHeight: 0
   obstacleSpawnTime: 1.5
   numOfObstacles: 18
