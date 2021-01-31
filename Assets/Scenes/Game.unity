@@ -807,7 +807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8838686913918765487, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
       propertyPath: numOfObstacles
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8838686913918765487, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
       propertyPath: toSpawnlist.Array.size
