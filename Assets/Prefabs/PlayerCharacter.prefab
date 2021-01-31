@@ -173,7 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCollider: {fileID: 5676339889668717108}
   playerUI: {fileID: 0}
-  moveSpeed: 5
+  moveSpeed: 12
   deviation: 0
   rotationSpeed: 30
   currentDirection: {x: 0, y: 0, z: 0}
