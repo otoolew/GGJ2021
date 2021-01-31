@@ -28,7 +28,23 @@ public class Obstacle : MonoBehaviour
             Debug.Log("Overlap detected - deleting");
             Destroy(this.gameObject);
         }
+
         if(other.gameObject.tag == ("Player") && (this.gameObject.tag == "Spawnable"))
+        {
+            Debug.Log("Player hit!");
+            PlayerCharacter pc = other.GetComponent<PlayerCharacter>();
+            if (pc)
+            {
+                if(pc.PlayerHitSFX.clip != null)
+                {
+                    pc.PlayerHitSFX.Play();
+                }
+            }
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(currentSceneName);
+        }
+
+        if (other.gameObject.tag == ("Player") && (this.gameObject.tag == "Enemy"))
         {
             Debug.Log("Player hit!");
             PlayerCharacter pc = other.GetComponent<PlayerCharacter>();
@@ -41,16 +57,15 @@ public class Obstacle : MonoBehaviour
                     return;
                 }
 
-                if(pc.PlayerHitSFX.clip != null)
+                if (pc.PlayerHitSFX.clip != null)
                 {
                     pc.PlayerHitSFX.Play();
                 }
             }
             string currentSceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene(currentSceneName);
-
-        }   
-        if(other.gameObject.tag == ("Player") && (this.gameObject.tag == "Soul"))
+        }
+        if (other.gameObject.tag == ("Player") && (this.gameObject.tag == "Soul"))
         {
             PlayerCharacter pc = other.GetComponent<PlayerCharacter>();
             if (pc)
