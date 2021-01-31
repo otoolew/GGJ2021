@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 65146610b99b9de49ac86b2f2052bf17, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ab30a7ce5a526554492d611c1818bc3e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 1
@@ -125,8 +125,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5898336024824876678}
   - component: {fileID: 5878025158647264177}
-  - component: {fileID: 457350771031509052}
-  - component: {fileID: 719103187691835185}
+  - component: {fileID: 8646054706988868753}
+  - component: {fileID: 2092972287245433203}
   m_Layer: 0
   m_Name: Demon_Bat
   m_TagString: Spawnable
@@ -141,8 +141,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3244729539969149779}
-  m_LocalRotation: {x: -0.29581407, y: 0.10014255, z: -0.7581865, w: 0.57237995}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1385653570707902122}
@@ -163,43 +163,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSpeed: 15
---- !u!70 &457350771031509052
-CapsuleCollider2D:
+--- !u!54 &8646054706988868753
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3244729539969149779}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.30785486, y: 0.45136902}
-  m_Size: {x: 5.7488594, y: 7.676128}
-  m_Direction: 0
---- !u!50 &719103187691835185
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3244729539969149779}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
+  serializedVersion: 2
   m_Mass: 1
-  m_LinearDrag: 0
+  m_Drag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_UseGravity: 0
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_Constraints: 0
   m_CollisionDetection: 0
-  m_Constraints: 2
+--- !u!136 &2092972287245433203
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3244729539969149779}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.62
+  m_Height: 10.82
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.46, z: 0}
 --- !u!1001 &1490812327400220993
 PrefabInstance:
   m_ObjectHideFlags: 0
