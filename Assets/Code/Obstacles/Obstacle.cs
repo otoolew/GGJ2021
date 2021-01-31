@@ -23,7 +23,7 @@ public class Obstacle : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //delete if we spawn overlaps
-        if(other.gameObject.tag == ("Spawnable"))
+        if(other.gameObject.tag == ("Spawnable") && other.gameObject.transform.position.z <= -35f)
         {
             //Debug.Log("Overlap detected - deleting");
             Destroy(this.gameObject);
