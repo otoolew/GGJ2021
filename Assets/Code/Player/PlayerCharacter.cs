@@ -16,8 +16,8 @@ public class PlayerCharacter : MonoBehaviour
     #endregion
 
     #region Components
-    [SerializeField] private CapsuleCollider playerCollider;
-    public CapsuleCollider PlayerCollider { get => playerCollider; set => playerCollider = value; }
+    [SerializeField] private CharacterController characterController;
+    public CharacterController CharacterController { get => characterController; set => characterController = value; }
 
     [SerializeField] private PlayerUI playerUI;
     public PlayerUI PlayerUI { get => playerUI; set => playerUI = value; }
@@ -41,14 +41,22 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private Vector3 moveVector = Vector3.zero;
     [SerializeField] private float jumpSpeed;
     [SerializeField] private float gravity;
-    [SerializeField] private CharacterController characterController;
 
+    [SerializeField] private AudioSource playerHitSFX;
+    public AudioSource PlayerHitSFX { get => playerHitSFX; set => playerHitSFX = value; }
+
+    [SerializeField] private AudioSource changeDirectionSFX;
+    public AudioSource ChangeDirectionSFX { get => changeDirectionSFX; set => changeDirectionSFX = value; }
+
+    [SerializeField] private AudioSource collectSoulSFX;
+    public AudioSource CollectSoulSFX { get => collectSoulSFX; set => collectSoulSFX = value; }
     #endregion
-    #region Mouse Values
 
+    #region Mouse Values
     [SerializeField] private LayerMask layerMask;
     public LayerMask LayerMask { get => layerMask; set => layerMask = value; }
     #endregion
+
     #region Monobehaviour 
     private void Awake()
     {
@@ -128,8 +136,10 @@ public class PlayerCharacter : MonoBehaviour
             return;
         }
 
-        //Vector3 offset = Vector3.right + new Vector3(13.59f, 0, 0);
+        float previousDeviation = deviation;
         deviation = Vector3.Dot(Vector3.right.normalized, playerToMouseDirection.normalized);
+        ChangeDirection(previousDeviation, deviation);
+
         if(Quaternion.LookRotation(playerToMouseDirection).eulerAngles != Vector3.zero)
         {
             Quaternion lookRotation = Quaternion.LookRotation(playerToMouseDirection);
@@ -142,6 +152,18 @@ public class PlayerCharacter : MonoBehaviour
             }
         }
     }
+    private void ChangeDirection(float previousDeviation, float updatedDeviation)
+    {
+        if((previousDeviation < 0 && updatedDeviation < 0) || (previousDeviation > 0 && updatedDeviation > 0))
+        {
+
+        }
+        else
+        {
+            changeDirectionSFX.Play();
+        }
+    }
+
     private Vector3 MouseToWorldPoint(Vector2 mouseScreen)
     {
         Ray ray = Camera.main.ScreenPointToRay(mouseScreen);
@@ -164,38 +186,11 @@ public class PlayerCharacter : MonoBehaviour
     #endregion
 
     #region Character Methods
-    //public void SteerInDirection(Vector2 direction)
-    //{
-    //    float dirX = direction.x;
-    //    float halfScreen = Screen.width / 2;
-    //    Debug.Log("dirX " + dirX);
-    //    Debug.Log("Half Screen " + halfScreen);
 
-    //    float normal = dirX / Screen.width;
-    //    Debug.Log("Normal " + normal);
-    //    Vector3 forward = transform.TransformDirection(Vector3.forward);
-    //    Vector3 toOther = new Vector3(direction.x, 0, direction.y) - transform.position;
-    //    print("Dot Product " + Vector3.Dot(forward, Vector3.forward));
-    //    if (Vector3.Dot(forward, toOther) < 0)
-    //    {
-    //        print("The other transform is behind me!");
-    //    }
-    //    // get the touch position from the screen touch to world point
-    //    Vector3 touchedPos = MouseToWorldPoint(direction);
-    //    touchedPos.y = 0;
-    //    touchedPos.z = 0;
-    //    // lerp and set the position of the current object to that of the touch, but smoothly over time.
-    //    transform.position = Vector3.Lerp(transform.position, touchedPos, Time.deltaTime);
-
-    //    //transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(direction.x,0.0f, 0.0f) , Time.deltaTime * moveSpeed);
-    //}
-    public void SteerInDirection(Vector2 direction)
-    {        
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(direction.x, 0, 0), moveSpeed);
-    }
-    public void SteerInDirection(float direction)
+    public void SteerInDirection(float deviationValue)
     {
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(direction, 0, 0), Time.deltaTime * moveSpeed);
+
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(deviationValue, 0, 0), Time.deltaTime * moveSpeed);
     }
 
     public void EnableCharacterInput()

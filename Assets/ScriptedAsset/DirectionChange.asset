@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a407266e3588a4e44911f9b42eec2662, type: 3}
+  m_Name: DirectionChange
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: d415d27a63fd49046904a939eacc2cf8, type: 3}

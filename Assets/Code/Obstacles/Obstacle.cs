@@ -31,11 +31,28 @@ public class Obstacle : MonoBehaviour
         if(other.gameObject.tag == ("Player") && (this.gameObject.tag == "Spawnable"))
         {
             Debug.Log("Player hit!");
+            PlayerCharacter pc = other.GetComponent<PlayerCharacter>();
+            if (pc)
+            {
+                if(pc.PlayerHitSFX.clip != null)
+                {
+                    pc.PlayerHitSFX.Play();
+                }
+            }
             string currentSceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene(currentSceneName);
         }   
         if(other.gameObject.tag == ("Player") && (this.gameObject.tag == "Soul"))
         {
+            PlayerCharacter pc = other.GetComponent<PlayerCharacter>();
+            if (pc)
+            {
+                if (pc.CollectSoulSFX.clip != null)
+                {
+                    pc.CollectSoulSFX.Play();
+                }
+            }
+
             Debug.Log("Soul acquired!");
             Destroy(this.gameObject);
         }
