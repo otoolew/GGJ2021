@@ -104,7 +104,6 @@ public class PlayerCharacter : MonoBehaviour
             playerUI = GetComponent<PlayerUI>();
         }
         characterController = GetComponent<CharacterController>();
-        Timer.instance.BeginTimer();
     }
 
     // Update is called once per frame

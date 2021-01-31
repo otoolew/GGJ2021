@@ -17,8 +17,8 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        StartCoroutine(ObstacleSpawn());
         Timer.instance.BeginTimer();
+        StartCoroutine(ObstacleSpawn());
     }
 
     IEnumerator ObstacleSpawn()
@@ -42,7 +42,6 @@ public class SpawnManager : MonoBehaviour
     }
 
     //determine which object overlapped and then do the thing
-
     private void destroyObstacle()
     {
         foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Spawnable"))
