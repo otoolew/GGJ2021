@@ -70,7 +70,11 @@
             "m_Id": "de605bd1c1a84efb8293e4a3f1e55a09"
         }
     ],
-    "m_Keywords": [],
+    "m_Keywords": [
+        {
+            "m_Id": "818cc6df18de436594cfe32aafe209ff"
+        }
+    ],
     "m_Nodes": [
         {
             "m_Id": "5de0ce2aecce4c0fac6c1c85868d2dc5"
@@ -1775,8 +1779,8 @@
     ],
     "m_VertexContext": {
         "m_Position": {
-            "x": 1880.0,
-            "y": -22.99998664855957
+            "x": 1878.0,
+            "y": -23.0
         },
         "m_Blocks": [
             {
@@ -7137,6 +7141,25 @@
         "w": 0.0
     },
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.ShaderKeyword",
+    "m_ObjectId": "818cc6df18de436594cfe32aafe209ff",
+    "m_Guid": {
+        "m_GuidSerialized": "3fd25712-8d56-451a-8875-b0900982c717"
+    },
+    "m_Name": "ReceiveShadowsOff",
+    "m_DefaultReferenceName": "BOOLEAN_818CC6DF18DE436594CFE32AAFE209FF_ON",
+    "m_OverrideReferenceName": "_RECEIVE_SHADOWS_OFF",
+    "m_GeneratePropertyBlock": true,
+    "m_KeywordType": 0,
+    "m_KeywordDefinition": 0,
+    "m_KeywordScope": 1,
+    "m_Entries": [],
+    "m_Value": 1,
+    "m_IsEditable": true
 }
 
 {
