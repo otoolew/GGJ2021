@@ -320,87 +320,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 156458072}
   colorSwatch: {fileID: 11400000, guid: 3e44027acdc3c7e44ac9ff758cc35cc5, type: 2}
---- !u!1 &218442275
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 218442276}
-  - component: {fileID: 218442278}
-  - component: {fileID: 218442277}
-  m_Layer: 0
-  m_Name: SurfTail_01
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &218442276
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218442275}
-  m_LocalRotation: {x: -0, y: 0.37383816, z: -0, w: 0.927494}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 4.0241, y: 4.0241, z: 4.0241}
-  m_Children: []
-  m_Father: {fileID: 2108008178}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 43.905, z: 0}
---- !u!23 &218442277
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218442275}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 30609bef527f12644990e4a248baec57, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &218442278
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218442275}
-  m_Mesh: {fileID: 6939727906156110939, guid: 0e718f083323f7b44b4fc28d64711f45, type: 3}
 --- !u!114 &272933927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,7 +546,7 @@ GameObject:
   - component: {fileID: 337110176}
   - component: {fileID: 337110175}
   m_Layer: 0
-  m_Name: SurfTail_01 (1)
+  m_Name: SurfTail_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -645,7 +564,7 @@ Transform:
   m_LocalScale: {x: 4.0241, y: 4.0241, z: 4.0241}
   m_Children: []
   m_Father: {fileID: 2108008178}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 66.62, z: 0}
 --- !u!23 &337110175
 MeshRenderer:
@@ -6664,10 +6583,10 @@ GameObject:
   - component: {fileID: 1632499101}
   - component: {fileID: 1892893171}
   - component: {fileID: 1632499100}
+  - component: {fileID: 1632499102}
   - component: {fileID: 1632499099}
   - component: {fileID: 1632499098}
   - component: {fileID: 1632499097}
-  - component: {fileID: 1632499102}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -7007,7 +6926,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7b231c7df47163a4b9d0f4d3fe1faa2b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -7572,8 +7491,8 @@ MonoBehaviour:
   playerAnimator: {fileID: 874786641}
   characterController: {fileID: 1632499100}
   playerUI: {fileID: 272933927}
-  wakeEffect: {fileID: 0}
-  playerAttackSFX: {fileID: 0}
+  wakeEffect: {fileID: 337110173}
+  playerAttackSFX: {fileID: 1632499102}
   playerHitSFX: {fileID: 1632499097}
   changeDirectionSFX: {fileID: 1632499099}
   collectSoulSFX: {fileID: 1632499098}
@@ -7704,7 +7623,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 874786644}
-  - {fileID: 218442276}
   - {fileID: 337110174}
   m_Father: {fileID: 1632499101}
   m_RootOrder: 0
