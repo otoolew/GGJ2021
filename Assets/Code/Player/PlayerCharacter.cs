@@ -193,11 +193,18 @@ public class PlayerCharacter : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(deviationValue, 0, 0), Time.deltaTime * moveSpeed);
     }
+
+    public void Attack()
+    {
+        Debug.Log("[Player] Attack");
+    }
+
     public void CollectSoul()
     {
         soulsCollected += 1;
         playerUI.ChangeSoulsCollectedText(soulsCollected);
     }
+
     public void EnableCharacterInput()
     {
         inputActions.Character.Enable();

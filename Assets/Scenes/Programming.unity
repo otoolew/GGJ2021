@@ -692,16 +692,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8838686913918765485, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
       propertyPath: m_Name
-      value: ObstacleManager (1)
+      value: ObstacleManager
       objectReference: {fileID: 0}
-    - target: {fileID: 8838686913918765487, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
-      propertyPath: toSpawnlist.Array.size
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 8838686913918765487, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
-      propertyPath: toSpawnlist.Array.data[12]
-      value: 
-      objectReference: {fileID: 3244729539969149779, guid: 34bd52fe6334f4f0386cb6a787ffdaac, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
 --- !u!1 &517844711
@@ -752,7 +744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &533725330
 MeshCollider:
   m_ObjectHideFlags: 0
