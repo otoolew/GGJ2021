@@ -12,7 +12,7 @@ public class PlayerUI : MonoBehaviour
     
     public void ChangeSoulsCollectedText(int value)
     {
-        soulsCollected_Text.text = "Souls Collected : " + value;
+        soulsCollected_Text.text = value + "";
     }
     public void OpenPauseMenu()
     {
