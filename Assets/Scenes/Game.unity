@@ -20,12 +20,12 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 40
   m_LinearFogEnd: 60
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.447, g: 0.447, b: 0.447, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_AmbientMode: 3
+  m_SubtractiveShadowColor: {r: 0.5550625, g: 0.6328749, b: 0.83, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -870,22 +870,6 @@ PrefabInstance:
     - target: {fileID: 8838686913918765485, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
       propertyPath: m_Name
       value: ObstacleManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8838686913918765487, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
-      propertyPath: numOfObstacles
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 8838686913918765487, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
-      propertyPath: toSpawnlist.Array.size
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 8838686913918765487, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
-      propertyPath: toSpawnlist.Array.data[3]
-      value: 
-      objectReference: {fileID: 8819999980683922763, guid: dbc2579ba728448d69027fda78755e0e, type: 3}
-    - target: {fileID: 8838686913918765487, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
-      propertyPath: toSpawnlist.Array.data[13]
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
@@ -6738,7 +6722,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.3
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -6780,7 +6764,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 3
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -7243,25 +7227,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &1747148721 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 714350548792314252, guid: 40c3ac156f950574c8f9f757bc8e8231, type: 3}
-  m_PrefabInstance: {fileID: 3060956850646670618}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1747148725
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1747148721}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1755244807
 GameObject:
   m_ObjectHideFlags: 0
@@ -7866,10 +7831,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 714350548792314252, guid: 40c3ac156f950574c8f9f757bc8e8231, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 6510289660289905569, guid: 40c3ac156f950574c8f9f757bc8e8231, type: 3}
       propertyPath: m_Name
       value: Environment
