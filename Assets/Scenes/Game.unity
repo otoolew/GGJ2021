@@ -805,22 +805,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObstacleManager
       objectReference: {fileID: 0}
-    - target: {fileID: 8838686913918765487, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
-      propertyPath: numOfObstacles
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 8838686913918765487, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
-      propertyPath: toSpawnlist.Array.size
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 8838686913918765487, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
-      propertyPath: toSpawnlist.Array.data[3]
-      value: 
-      objectReference: {fileID: 8819999980683922763, guid: dbc2579ba728448d69027fda78755e0e, type: 3}
-    - target: {fileID: 8838686913918765487, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
-      propertyPath: toSpawnlist.Array.data[13]
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a71b9788f65eb6b4385ad3c6dc7ba877, type: 3}
 --- !u!1 &517844711
