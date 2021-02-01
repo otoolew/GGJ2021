@@ -8,6 +8,9 @@ public class Obstacle : MonoBehaviour
 
     [SerializeField] private float obstacleSpeed;
 
+    [SerializeField] private GameObject slayedEffect;
+    public GameObject SlayEffect { get => slayedEffect; set => slayedEffect = value; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +55,9 @@ public class Obstacle : MonoBehaviour
             {
                 if (pc.IsAttacking)
                 {
-                    Destroy(this.gameObject);
+                    // Coroutine to do Slay FX
+                    StartCoroutine(SlayedRoutine());
+
                     return;
                 }
 
@@ -79,6 +84,29 @@ public class Obstacle : MonoBehaviour
 
             Debug.Log("Soul acquired!");
             Destroy(this.gameObject);
+        }
+
+        IEnumerator SlayedRoutine()
+        {
+            if (slayedEffect != null) 
+            {
+                slayedEffect.SetActive(true);
+
+                yield return new WaitForSeconds(0.25f);
+                
+                slayedEffect.SetActive(false);
+
+                PlayerCharacter pc = other.GetComponent<PlayerCharacter>();
+
+                pc.CollectSoul();
+                
+                if (pc.CollectSoulSFX.clip != null)
+                {
+                    pc.CollectSoulSFX.Play();
+                }
+
+                Destroy(this.gameObject);
+            }
         }
     }
 }
