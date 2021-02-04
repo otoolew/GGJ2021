@@ -132,6 +132,8 @@ public class GameMode : MonoBehaviour
 
         //show souls
         endSouls.text = player.soulsCollected.ToString();
+
+        FindObjectOfType<Obstacle>().GameOver = true;
     }
 
     public void QuitGame()

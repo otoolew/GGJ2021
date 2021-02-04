@@ -11,10 +11,16 @@ public class Obstacle : MonoBehaviour
     [SerializeField] private GameObject slayedEffect;
     public GameObject SlayEffect { get => slayedEffect; set => slayedEffect = value; }
 
-    // Start is called before the first frame update
+    private int enemiesSlayed;
+
+    private bool gameReset;
+    public bool GameOver { get => gameReset; set => gameReset = value; }
+
+// Start is called before the first frame update
     void Start()
     {
-        
+        enemiesSlayed = 0;
+        gameReset = false;
     }
 
     // Update is called once per frame
@@ -23,9 +29,10 @@ public class Obstacle : MonoBehaviour
         transform.Translate(0, 0, obstacleSpeed * Time.deltaTime);
     }
 
+    //Kati note on 2/4 - need/want to refactor this function A LOT
     private void OnTriggerEnter(Collider other)
     {
-        //delete if we spawn overlaps
+        //delete if we spawn overlaps before getting on screen
         if(other.gameObject.tag == ("Spawnable") && other.gameObject.transform.position.z <= -35f)
         {
             //Debug.Log("Overlap detected - deleting");
@@ -49,6 +56,8 @@ public class Obstacle : MonoBehaviour
             //SceneManager.LoadScene(currentSceneName);
 
             //stop timer and capture mark
+            GameOver = true;
+
             string endGameTime = Timer.instance.timePlayingStr;
             Timer.instance.EndTimer();
 
@@ -66,6 +75,10 @@ public class Obstacle : MonoBehaviour
                     // Coroutine to do Slay FX
                     StartCoroutine(SlayedRoutine());
 
+                    //track # of enemies slayed
+                    enemiesSlayed += enemiesSlayed;
+                    Debug.Log("Enemies Slayed: " + enemiesSlayed);
+
                     return;
                 }
 
@@ -76,6 +89,7 @@ public class Obstacle : MonoBehaviour
             }
             //string currentSceneName = SceneManager.GetActiveScene().name;
             //SceneManager.LoadScene(currentSceneName);
+            GameOver = true;
 
             string endGameTime = Timer.instance.timePlayingStr;
             Timer.instance.EndTimer();
@@ -86,17 +100,26 @@ public class Obstacle : MonoBehaviour
         if (other.gameObject.tag == ("Player") && (this.gameObject.tag == "Soul"))
         {
             PlayerCharacter pc = other.GetComponent<PlayerCharacter>();
-            if (pc)
+
+            if(GameOver == true)
             {
-                pc.CollectSoul();
-                if (pc.CollectSoulSFX.clip != null)
-                {
-                    pc.CollectSoulSFX.Play();
-                }
+                return;
             }
 
-            Debug.Log("Soul acquired!");
-            Destroy(this.gameObject);
+            if (GameOver)
+            {
+                if (pc)
+                {
+                    pc.CollectSoul();
+                    if (pc.CollectSoulSFX.clip != null)
+                    {
+                        pc.CollectSoulSFX.Play();
+                    }
+                }
+
+                Debug.Log("Soul acquired!");
+                Destroy(this.gameObject);
+            }
         }
 
         IEnumerator SlayedRoutine()
