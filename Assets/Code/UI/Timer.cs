@@ -9,6 +9,7 @@ public class Timer : MonoBehaviour
     public static Timer instance;
 
     [SerializeField] public Text timeCounter;
+    public string timePlayingStr;
 
     private TimeSpan timePlaying;
     private bool timerGoing;
@@ -45,8 +46,7 @@ public class Timer : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
-            string timePlayingStr = "Time: " + timePlaying.ToString("mm':'ss'.'ff");
-            print(timePlayingStr);
+            timePlayingStr = "Time: " + timePlaying.ToString("mm':'ss'.'ff");
             //timeCounter.GetComponent<Text>().text = timePlayingStr;
             timeCounter.text = timePlayingStr;
 

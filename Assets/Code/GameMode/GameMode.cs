@@ -17,12 +17,18 @@ public class GameMode : MonoBehaviour
     [SerializeField] private PlayerUI playerUI;
     public PlayerUI PlayerUI { get => playerUI; set => playerUI = value; }
 
+    [SerializeField] private GameObject endScreen;
+    [SerializeField] private Text endTime;
+    [SerializeField] private Text endSouls;
+
     [SerializeField] private PlayerCharacter playerCharacter;
     public PlayerCharacter PlayerCharacter { get => playerCharacter; set => playerCharacter = value; }
 
     [SerializeField] private Transform playerSpawnPoint;
     public Transform PlayerSpawnPoint { get => playerSpawnPoint; set => playerSpawnPoint = value; }
     #endregion
+
+    private bool restartLevel = false;
 
     private void Awake()
     {
@@ -79,6 +85,14 @@ public class GameMode : MonoBehaviour
     {
         Debug.Log("Start Game!");
         CurrentGameState = GameState.RUNNING;
+
+        if(restartLevel == true)
+        {
+            Debug.Log("Restarting level");
+            GameManager.Instance.LoadScene(SceneManager.GetActiveScene().name);
+            endScreen.gameObject.SetActive(false);
+
+        }
     }
 
     public void PauseGame()
@@ -101,7 +115,23 @@ public class GameMode : MonoBehaviour
     {
         Debug.Log("Reset");
         Time.timeScale = 1.0f;
-        GameManager.Instance.LoadScene(SceneManager.GetActiveScene().name);
+        CurrentGameState = GameState.GAME_OVER;
+
+        //stop player
+        var player = FindObjectOfType<PlayerCharacter>();
+        player.DisableCharacterInput();
+
+        //show game over panel
+        endScreen.gameObject.SetActive(true);
+        restartLevel = true;
+
+        //show timer
+        string endGameTime = Timer.instance.timePlayingStr;
+        Timer.instance.EndTimer();
+        endTime.text = endGameTime;
+
+        //show souls
+        endSouls.text = player.soulsCollected.ToString();
     }
 
     public void QuitGame()

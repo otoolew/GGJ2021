@@ -43,8 +43,16 @@ public class Obstacle : MonoBehaviour
                     pc.PlayerHitSFX.Play();
                 }
             }
-            string currentSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(currentSceneName);
+
+            //OLD game reset
+            //string currentSceneName = SceneManager.GetActiveScene().name;
+            //SceneManager.LoadScene(currentSceneName);
+
+            //stop timer and capture mark
+            string endGameTime = Timer.instance.timePlayingStr;
+            Timer.instance.EndTimer();
+
+            FindObjectOfType<GameMode>().ResetGame();
         }
 
         if (other.gameObject.tag == ("Player") && (this.gameObject.tag == "Enemy"))
@@ -66,8 +74,13 @@ public class Obstacle : MonoBehaviour
                     pc.PlayerHitSFX.Play();
                 }
             }
-            string currentSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(currentSceneName);
+            //string currentSceneName = SceneManager.GetActiveScene().name;
+            //SceneManager.LoadScene(currentSceneName);
+
+            string endGameTime = Timer.instance.timePlayingStr;
+            Timer.instance.EndTimer();
+
+            FindObjectOfType<GameMode>().ResetGame();
         }
 
         if (other.gameObject.tag == ("Player") && (this.gameObject.tag == "Soul"))

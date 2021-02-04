@@ -68,7 +68,7 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private float gravity;
     public float Gravity { get => gravity; set => gravity = value; }
 
-    [SerializeField] private int soulsCollected;
+    [SerializeField] public int soulsCollected;
     public int SoulsCollected { get => soulsCollected; set => soulsCollected = value; }
 
     [SerializeField] private bool isAttacking;
