@@ -1960,7 +1960,7 @@ MonoBehaviour:
   playerUI: {fileID: 272933927}
   endScreen: {fileID: 1385455899}
   endTime: {fileID: 2134594667}
-  endSouls: {fileID: 0}
+  endSouls: {fileID: 1796515575}
   playerCharacter: {fileID: 1892893171}
   playerSpawnPoint: {fileID: 517844712}
 --- !u!4 &1276872228
@@ -1994,7 +1994,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1385455900
 RectTransform:
   m_ObjectHideFlags: 0

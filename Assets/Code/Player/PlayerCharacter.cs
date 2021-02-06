@@ -84,6 +84,7 @@ public class PlayerCharacter : MonoBehaviour
     private void Awake()
     {
         inputActions = new PlayerControls();
+        soulsCollected = 0;
     }
 
     private void OnEnable()

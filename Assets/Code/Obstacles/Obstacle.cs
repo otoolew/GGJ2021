@@ -12,6 +12,7 @@ public class Obstacle : MonoBehaviour
     public GameObject SlayEffect { get => slayedEffect; set => slayedEffect = value; }
 
     private int enemiesSlayed;
+    public int EnemiesSlayed { get => enemiesSlayed; set => enemiesSlayed = value; }
 
     private bool gameReset;
     public bool GameOver { get => gameReset; set => gameReset = value; }
@@ -20,7 +21,7 @@ public class Obstacle : MonoBehaviour
     void Start()
     {
         enemiesSlayed = 0;
-        gameReset = false;
+        GameOver = false;
     }
 
     // Update is called once per frame
@@ -106,7 +107,7 @@ public class Obstacle : MonoBehaviour
                 return;
             }
 
-            if (GameOver)
+            if(GameOver == false)
             {
                 if (pc)
                 {
