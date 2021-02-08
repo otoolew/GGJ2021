@@ -49,6 +49,7 @@ public class Obstacle : MonoBehaviour
                 if(pc.PlayerHitSFX.clip != null)
                 {
                     pc.PlayerHitSFX.Play();
+                    pc.OnDeath();
                 }
             }
 
@@ -86,6 +87,7 @@ public class Obstacle : MonoBehaviour
                 if (pc.PlayerHitSFX.clip != null)
                 {
                     pc.PlayerHitSFX.Play();
+                    pc.OnDeath();
                 }
             }
             //string currentSceneName = SceneManager.GetActiveScene().name;

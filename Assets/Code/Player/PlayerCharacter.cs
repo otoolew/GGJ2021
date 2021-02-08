@@ -26,8 +26,20 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private GameObject wakeEffect;
     public GameObject WakeEffect { get => wakeEffect; set => wakeEffect = value; }
 
+    [SerializeField] private GameObject wakeSpray;
+    public GameObject WakeSpray { get => wakeSpray; set => wakeSpray = value; }
+
     [SerializeField] private GameObject attackEffect;
     public GameObject AttackEffect { get => attackEffect; set => attackEffect = value; }
+
+
+    [SerializeField] private GameObject activePlayer;
+    public GameObject ActivePlayer { get => activePlayer; set => activePlayer = value; } 
+
+    [SerializeField] private GameObject breakablePlayer;
+    public GameObject BreakablePlayer { get => breakablePlayer; set => breakablePlayer = value; }
+
+    
     #endregion
 
     #region SFX
@@ -265,5 +277,15 @@ public class PlayerCharacter : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawLine(transform.position, MouseToWorldPoint(Mouse.current.position.ReadValue()));
+    }
+
+    public void OnDeath()
+    {
+        if (wakeSpray != null)
+            wakeSpray.SetActive(false);
+        if (wakeEffect != null)
+            wakeEffect.SetActive(false);
+        activePlayer.SetActive(false);
+        breakablePlayer.SetActive(true);
     }
 }
