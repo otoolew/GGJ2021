@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Obstacle : MonoBehaviour
 {
-
     [SerializeField] private float obstacleSpeed;
 
     [SerializeField] private GameObject slayedEffect;
@@ -44,6 +43,7 @@ public class Obstacle : MonoBehaviour
         {
             Debug.Log("Player hit!");
             PlayerCharacter pc = other.GetComponent<PlayerCharacter>();
+
             if (pc)
             {
                 if(pc.PlayerHitSFX.clip != null)
@@ -58,12 +58,7 @@ public class Obstacle : MonoBehaviour
             //SceneManager.LoadScene(currentSceneName);
 
             //stop timer and capture mark
-            GameOver = true;
-
-            string endGameTime = Timer.instance.timePlayingStr;
-            Timer.instance.EndTimer();
-
-            FindObjectOfType<GameMode>().ResetGame();
+            StartCoroutine(SlowResetUI());
         }
 
         if (other.gameObject.tag == ("Player") && (this.gameObject.tag == "Enemy"))
@@ -92,12 +87,8 @@ public class Obstacle : MonoBehaviour
             }
             //string currentSceneName = SceneManager.GetActiveScene().name;
             //SceneManager.LoadScene(currentSceneName);
-            GameOver = true;
+            StartCoroutine(SlowResetUI());
 
-            string endGameTime = Timer.instance.timePlayingStr;
-            Timer.instance.EndTimer();
-
-            FindObjectOfType<GameMode>().ResetGame();
         }
 
         if (other.gameObject.tag == ("Player") && (this.gameObject.tag == "Soul"))
@@ -146,6 +137,21 @@ public class Obstacle : MonoBehaviour
 
                 Destroy(this.gameObject);
             }
+        }
+
+        IEnumerator SlowResetUI()
+        {
+            Debug.Log("Starting SlowResetUI Coroutine");
+            yield return new WaitForSeconds(2f);
+
+            GameOver = true;
+
+            string endGameTime = Timer.instance.timePlayingStr;
+            Timer.instance.EndTimer();
+
+            FindObjectOfType<GameMode>().ResetGame();
+            Debug.Log("Finished SlowResetUI Coroutine");
+
         }
     }
 }

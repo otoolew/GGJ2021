@@ -22,6 +22,7 @@ public class PlayerCharacter : MonoBehaviour
 
     [SerializeField] private PlayerUI playerUI;
     public PlayerUI PlayerUI { get => playerUI; set => playerUI = value; }
+
     #region VFX
     [SerializeField] private GameObject wakeEffect;
     public GameObject WakeEffect { get => wakeEffect; set => wakeEffect = value; }
@@ -38,6 +39,9 @@ public class PlayerCharacter : MonoBehaviour
 
     [SerializeField] private GameObject breakablePlayer;
     public GameObject BreakablePlayer { get => breakablePlayer; set => breakablePlayer = value; }
+
+    [SerializeField] private float slowMotion = 0.2f;
+    public float SlowMotionScale { get => slowMotion; set => slowMotion = value; }
 
     
     #endregion
@@ -285,7 +289,21 @@ public class PlayerCharacter : MonoBehaviour
             wakeSpray.SetActive(false);
         if (wakeEffect != null)
             wakeEffect.SetActive(false);
+        StartCoroutine(WaitToShow());
+    }
+
+    private IEnumerator WaitToShow()
+    {
         activePlayer.SetActive(false);
+        yield return new WaitForSeconds(0.1f);
         breakablePlayer.SetActive(true);
+        StartCoroutine(SlowMotion());
+    }
+
+    private IEnumerator SlowMotion()
+    {
+        Time.timeScale = SlowMotionScale;
+        yield return new WaitForSecondsRealtime(.5f);
+        Time.timeScale = 1;
     }
 }
