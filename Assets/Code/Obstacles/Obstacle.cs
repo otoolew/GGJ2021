@@ -10,6 +10,9 @@ public class Obstacle : MonoBehaviour
     [SerializeField] private GameObject slayedEffect;
     public GameObject SlayEffect { get => slayedEffect; set => slayedEffect = value; }
 
+    public AudioSource source;
+    public AudioClip deathRattle;
+
     private int enemiesSlayed;
     public int EnemiesSlayed { get => enemiesSlayed; set => enemiesSlayed = value; }
 
@@ -46,11 +49,7 @@ public class Obstacle : MonoBehaviour
 
             if (pc)
             {
-                if(pc.PlayerHitSFX.clip != null)
-                {
-                    pc.PlayerHitSFX.Play();
-                }
-                pc.OnDeath();
+                pc.OnDeath("Obstacle");
             }
 
             //OLD game reset
@@ -79,11 +78,7 @@ public class Obstacle : MonoBehaviour
                     return;
                 }
 
-                if (pc.PlayerHitSFX.clip != null)
-                {
-                    pc.PlayerHitSFX.Play();
-                }
-                pc.OnDeath();
+                pc.OnDeath("Enemy");
             }
             //string currentSceneName = SceneManager.GetActiveScene().name;
             //SceneManager.LoadScene(currentSceneName);
@@ -121,6 +116,11 @@ public class Obstacle : MonoBehaviour
             if (slayedEffect != null) 
             {
                 slayedEffect.SetActive(true);
+
+                if(source & deathRattle)
+                {
+                    source.PlayOneShot(deathRattle);
+                }
 
                 yield return new WaitForSeconds(0.25f);
                 

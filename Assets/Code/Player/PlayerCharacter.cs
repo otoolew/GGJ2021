@@ -66,6 +66,15 @@ public class PlayerCharacter : MonoBehaviour
 
     [SerializeField] private AudioSource collectSoulSFX;
     public AudioSource CollectSoulSFX { get => collectSoulSFX; set => collectSoulSFX = value; }
+
+    [SerializeField] private AudioSource playshotSource;
+    public AudioSource PlayshotSource { get => playshotSource; set => playshotSource = value; }
+
+    [SerializeField] private AudioClip deathByEnemySFX;
+    public AudioClip DeathByEnemySFX { get => deathByEnemySFX; set => deathByEnemySFX = value; }
+
+    [SerializeField] private AudioClip deathByObstacleSFX;
+    public AudioClip DeathByObstacleSFX { get => deathByObstacleSFX; set => deathByObstacleSFX = value; }
     #endregion
 
     #endregion
@@ -307,7 +316,7 @@ public class PlayerCharacter : MonoBehaviour
         Gizmos.DrawLine(transform.position, MouseToWorldPoint(Mouse.current.position.ReadValue()));
     }
 
-    public void OnDeath()
+    public void OnDeath(string causeOfDeath)
     {
         if (currentState==PlayerState.Playing)
         {
@@ -323,6 +332,14 @@ public class PlayerCharacter : MonoBehaviour
             if (breakablePlayer != null)
             {
                 GameObject breakPlayer = Instantiate(breakablePlayer, transform.position, transform.rotation);
+            }
+
+            if (causeOfDeath=="Enemy")
+            {
+                playshotSource.PlayOneShot(deathByEnemySFX);
+            } else if (causeOfDeath == "Obstacle")
+            {
+                playshotSource.PlayOneShot(deathByObstacleSFX);
             }
 
             // Coroutine to deactive activePlayer and slow motion effect.

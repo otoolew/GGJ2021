@@ -2851,7 +2851,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3f363d27c988e1f40a97ec3128fd7fb9, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3581,6 +3581,9 @@ MonoBehaviour:
   playerHitSFX: {fileID: 1632499097}
   changeDirectionSFX: {fileID: 1632499099}
   collectSoulSFX: {fileID: 1632499098}
+  playshotSource: {fileID: 1632499103}
+  deathByEnemySFX: {fileID: 8300000, guid: e7bd1561557ad4050b3adb7fee76b12f, type: 3}
+  deathByObstacleSFX: {fileID: 8300000, guid: e04401875fa244feba6700f54e1601cd, type: 3}
   moveSpeed: 12
   deviation: 0
   rotationSpeed: 30
