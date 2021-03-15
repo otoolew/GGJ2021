@@ -6,6 +6,14 @@ using UnityEngine.InputSystem;
 //[Serializable] public enum PlayerStat { }
 public class PlayerCharacter : MonoBehaviour
 {
+    public enum PlayerState
+    {
+        Playing,
+        Done
+    }
+
+    public PlayerState currentState;
+
     #region Input
     [SerializeField] private PlayerControls inputActions;
     public PlayerControls InputActions { get => inputActions; set => inputActions = value; }
@@ -58,6 +66,15 @@ public class PlayerCharacter : MonoBehaviour
 
     [SerializeField] private AudioSource collectSoulSFX;
     public AudioSource CollectSoulSFX { get => collectSoulSFX; set => collectSoulSFX = value; }
+
+    [SerializeField] private AudioSource playshotSource;
+    public AudioSource PlayshotSource { get => playshotSource; set => playshotSource = value; }
+
+    [SerializeField] private AudioClip deathByEnemySFX;
+    public AudioClip DeathByEnemySFX { get => deathByEnemySFX; set => deathByEnemySFX = value; }
+
+    [SerializeField] private AudioClip deathByObstacleSFX;
+    public AudioClip DeathByObstacleSFX { get => deathByObstacleSFX; set => deathByObstacleSFX = value; }
     #endregion
 
     #endregion
@@ -101,6 +118,7 @@ public class PlayerCharacter : MonoBehaviour
     {
         inputActions = new PlayerControls();
         soulsCollected = 0;
+        currentState = PlayerState.Playing;
     }
 
     private void OnEnable()
@@ -126,8 +144,11 @@ public class PlayerCharacter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LookAtMouse();
-        SteerInDirection(deviation);        
+        if (currentState==PlayerState.Playing)
+        {
+            LookAtMouse();
+            SteerInDirection(deviation);
+        }
     }
 
     private void OnDisable()
@@ -167,7 +188,7 @@ public class PlayerCharacter : MonoBehaviour
     {
         if (callbackContext.performed)
         {
-            if (!IsAttacking)
+            if (!IsAttacking & currentState==PlayerState.Playing)
             {
                 StartCoroutine(AttackRoutine());
             }
@@ -194,6 +215,9 @@ public class PlayerCharacter : MonoBehaviour
         wakeEffect.SetActive(true);
         attackEffect.SetActive(false);
 
+        // Fix for bug where wakeEffect was being renabled when gameover while attacking.
+        if (currentState == PlayerState.Done)
+            wakeEffect.SetActive(false);
     }
     #endregion
 
@@ -263,8 +287,17 @@ public class PlayerCharacter : MonoBehaviour
 
     public void CollectSoul()
     {
-        soulsCollected += 1;
-        playerUI.ChangeSoulsCollectedText(soulsCollected);
+        if (currentState == PlayerState.Playing)
+        {
+            soulsCollected += 1;
+
+            if (collectSoulSFX.clip != null)
+            {
+                collectSoulSFX.Play();
+            }
+
+            playerUI.ChangeSoulsCollectedText(soulsCollected);
+        }
     }
 
     public void EnableCharacterInput()
@@ -283,20 +316,44 @@ public class PlayerCharacter : MonoBehaviour
         Gizmos.DrawLine(transform.position, MouseToWorldPoint(Mouse.current.position.ReadValue()));
     }
 
-    public void OnDeath()
+    public void OnDeath(string causeOfDeath)
     {
-        if (wakeSpray != null)
-            wakeSpray.SetActive(false);
-        if (wakeEffect != null)
-            wakeEffect.SetActive(false);
-        StartCoroutine(WaitToShow());
+        if (currentState==PlayerState.Playing)
+        {
+            currentState = PlayerState.Done;
+
+            // Stop wake effects
+            if (wakeSpray != null)
+                wakeSpray.SetActive(false);
+            if (wakeEffect != null)
+                wakeEffect.SetActive(false);
+
+            // Add in breakable prefab
+            if (breakablePlayer != null)
+            {
+                GameObject breakPlayer = Instantiate(breakablePlayer, transform.position, transform.rotation);
+            }
+
+            if (causeOfDeath=="Enemy")
+            {
+                playshotSource.PlayOneShot(deathByEnemySFX);
+            } else if (causeOfDeath == "Obstacle")
+            {
+                playshotSource.PlayOneShot(deathByObstacleSFX);
+            }
+
+            // Coroutine to deactive activePlayer and slow motion effect.
+            StartCoroutine(WaitToShow());
+        }
+            
+        
     }
 
     private IEnumerator WaitToShow()
     {
         activePlayer.SetActive(false);
         yield return new WaitForSeconds(0.1f);
-        breakablePlayer.SetActive(true);
+
         StartCoroutine(SlowMotion());
     }
 
