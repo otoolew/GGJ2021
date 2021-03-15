@@ -49,8 +49,8 @@ public class Obstacle : MonoBehaviour
                 if(pc.PlayerHitSFX.clip != null)
                 {
                     pc.PlayerHitSFX.Play();
-                    pc.OnDeath();
                 }
+                pc.OnDeath();
             }
 
             //OLD game reset
@@ -82,8 +82,8 @@ public class Obstacle : MonoBehaviour
                 if (pc.PlayerHitSFX.clip != null)
                 {
                     pc.PlayerHitSFX.Play();
-                    pc.OnDeath();
                 }
+                pc.OnDeath();
             }
             //string currentSceneName = SceneManager.GetActiveScene().name;
             //SceneManager.LoadScene(currentSceneName);
@@ -95,7 +95,7 @@ public class Obstacle : MonoBehaviour
         {
             PlayerCharacter pc = other.GetComponent<PlayerCharacter>();
 
-            if(GameOver == true)
+            if(GameOver == true | pc.currentState==PlayerCharacter.PlayerState.Done)
             {
                 return;
             }
@@ -129,11 +129,6 @@ public class Obstacle : MonoBehaviour
                 PlayerCharacter pc = other.GetComponent<PlayerCharacter>();
 
                 pc.CollectSoul();
-                
-                if (pc.CollectSoulSFX.clip != null)
-                {
-                    pc.CollectSoulSFX.Play();
-                }
 
                 Destroy(this.gameObject);
             }
